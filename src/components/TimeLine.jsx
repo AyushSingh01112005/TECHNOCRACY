@@ -1,6 +1,6 @@
 import React from "react";
-import img2 from "../assets/spider.png";
-import img3 from "../assets/spider2.png";
+import spider from "../assets/spider.png";
+import spider2 from "../assets/spider2.png";
 
 
 const TimeLine = () => {
@@ -9,43 +9,43 @@ const TimeLine = () => {
         date: "AUG 10, 2026",
         title: "REGISTRATION",
         description: "Registration opens for CodeUtsava 10.0.",
-        bgImage: img2,
+        bgImage: spider,
     },
     {
         date: "AUG 20, 2026",
         title: "SHORTLISTING BEGINS",
         description: "Submissions are reviewed and teams are shortlisted for the hackathon.",
-        bgImage: img3,
+        bgImage: spider2,
     },
     {
         date: "AUG 25, 2026",
         title: "REGISTRATION CLOSED",
         description: "Registration closes. No further team registrations will be accepted.",
-        bgImage: img2,
+        bgImage: spider,
     },
     {
         date: "AUG 28, 2026",
         title: "FINAL TEAM ANNOUNCED",
         description: "The final list of selected teams for CodeUtsava 10.0 is announced.",
-        bgImage: img3,
+        bgImage: spider2,
     },
     {
         date: "SEP 05, 2026",
         title: "HACKATHON BEGINS",
         description: "The CodeUtsava 10.0 hackathon officially begins.",
-        bgImage: img2,
+        bgImage: spider,
     },
     {
         date: "SEP 06, 2026",
         title: "FINAL SUBMISSION",
         description: "Submit your final project before the deadline.",
-        bgImage: img3,
+        bgImage: spider2,
     },
     {
         date: "SEP 07, 2026",
         title: "RESULTS",
         description: "Winners of CodeUtsava 10.0 are announced.",
-        bgImage: img2,
+        bgImage: spider,
     },
 ];
 

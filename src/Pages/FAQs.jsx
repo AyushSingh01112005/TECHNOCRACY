@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FAQsVideo from "../assets/FAQs.mp4";
+import FAQsvideo from "../assets/FAQsvideo.mp4";
 import RedSpidy from '../components/RedSpidy'
 
 
@@ -77,7 +77,7 @@ const FAQs = () => {
 
 
       <video
-        src={FAQsVideo}
+        src={FAQsvideo}
         autoPlay
         muted
         loop

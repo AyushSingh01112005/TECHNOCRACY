@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
-import BlackSpider from "../assets/redSpider.mp4";
+import redSpider from "../assets/redSpider.mp4";
 import BlackSvg from "../components/BlackSvg";
-import LastYearImage from "../assets/1.png";
+import LastYearImage from "../assets/round.png";
 import TimeLine from "../components/TimeLine";
 import Guidelines from "../components/Guidelines";
 import PricePool from "../components/PricePool";
@@ -132,7 +132,7 @@ const Home = () => {
 
                 <video
                     ref={videoRef}
-                    src={BlackSpider}
+                    src={redSpider}
                     autoPlay
                     muted
                     playsInline

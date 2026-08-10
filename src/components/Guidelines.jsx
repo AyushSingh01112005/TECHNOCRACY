@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../assets/spider.png";
+import spider from "../assets/spider.png";
 
 import {
   FaUserCheck,
@@ -77,7 +77,7 @@ const Guidelines = () => {
                 className="group relative overflow-hidden rounded-2xl border border-red-500/20 bg-neutral-950/60 p-6 text-center backdrop-blur-xl transition-all duration-300 "
               >
                 <img
-                  src={img}
+                  src={spider}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover opacity-30 group-hover:opacity-80 transition-transform duration-500  "
                 />

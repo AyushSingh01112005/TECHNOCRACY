@@ -1,13 +1,13 @@
 import React from "react";
-import img2 from "../assets/spider.png";
-import img3 from "../assets/spider2.png";
+import spider from "../assets/spider.png";
+import spider2 from "../assets/spider2.png";
 
 const prizes = [
     {
         position: "01",
         title: "FIRST PRIZE",
         amount: "₹50,000",
-        img: img2,
+        img: spider,
         badge: "CHAMPION",
         featured: true,
     },
@@ -15,21 +15,21 @@ const prizes = [
         position: "02",
         title: "SECOND PRIZE",
         amount: "₹20,000",
-        img: img3,
+        img: spider2,
         badge: "RUNNER UP",
     },
     {
         position: "03",
         title: "THIRD PRIZE",
         amount: "₹10,000",
-        img: img2,
+        img: spider,
         badge: "2ND RUNNER UP",
     },
     {
         position: "04",
         title: "SPECIAL PRIZE",
         amount: "₹5,000",
-        img: img3,
+        img: spider2,
         badge: "CATEGORICAL",
     },
 ];
@@ -40,12 +40,12 @@ const PricePool = () => {
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
 
             <img
-                src={img2}
+                src={spider}
                 alt=""
                 className="pointer-events-none absolute -left-28 top-12 h-[650px] w-[650px] rotate-[-12deg] object-contain opacity-15 blur-[1px] transition-all duration-700  md:-left-16"
             />
             <img
-                src={img3}
+                src={spider2}
                 alt=""
                 className="pointer-events-none absolute -right-28 bottom-6 h-[650px] w-[650px] rotate-[12deg] object-contain opacity-15 blur-[1px] transition-all duration-700  md:-right-16"
             />
@@ -123,7 +123,7 @@ const PricePool = () => {
 
                     <div className="group relative overflow-hidden rounded-2xl border border-red-500/20 bg-black/60 p-6 text-center backdrop-blur-2xl transition-all duration-500 sm:col-span-2 lg:col-span-3">
                         <img
-                            src={img3}
+                            src={spider2}
                             alt=""
                             className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 object-contain opacity-15 transition-all duration-500  "
                         />

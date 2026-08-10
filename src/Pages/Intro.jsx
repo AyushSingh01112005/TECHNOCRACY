@@ -1,4 +1,4 @@
-import BlackSpider from "../assets/chorPolice.webm";
+import  chorPolice from "../assets/chorPolice.webm";
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -89,7 +89,7 @@ const Intro = () => {
 
       <video
         ref={videoRef}
-        src={BlackSpider}
+        src={chorPolice}
         autoPlay
         muted
         playsInline

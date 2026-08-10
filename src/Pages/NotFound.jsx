@@ -1,9 +1,9 @@
- import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Not from "../assets/NotFound.mp4";
 import BlackSvg from "../components/BlackSvg";
-import RedSvg from "../components/RedSpidy";
+import RedSpidy from "../components/RedSpidy";
 
 const NotFound = () => {
     const navigate = useNavigate();
@@ -98,7 +98,7 @@ const NotFound = () => {
                     transition: "left 0.35s linear, top 0.35s linear",
                 }}
             >
-                <RedSvg />
+                <RedSpidy />
             </div>
 
         </div>

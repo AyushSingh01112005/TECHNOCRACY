@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import FAQsVideo from "../assets/FAQs.mp4";
+import  FAQsvideo from "../assets/FAQsvideo.mp4";
 import BlackSvg from "../components/BlackSvg";
 
 const Register = () => {
@@ -32,7 +32,7 @@ const Register = () => {
 
             {/* Background Video */}
             <video
-                src={FAQsVideo}
+                src={FAQsvideo}
                 className="absolute inset-0 h-full w-full object-cover"
                 muted
                 playsInline
