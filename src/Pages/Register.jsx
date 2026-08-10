@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import  FAQsvideo from "../assets/FAQsvideo.MP4";
+import FAQsvideo from "../assets/FAQsvideo.MP4";
 import BlackSvg from "../components/BlackSvg";
 
 const Register = () => {
     const navigate = useNavigate();
+
+    const [videoReady, setVideoReady] = useState(false);
 
     const [position, setPosition] = useState({
         x: 50,
@@ -30,6 +32,23 @@ const Register = () => {
     return (
         <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-black">
 
+            {/* Loading Screen */}
+            {!videoReady && (
+                <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black">
+                    <div className="mb-6">
+                        <BlackSvg />
+                    </div>
+
+                    <p className="text-xs font-black uppercase tracking-[0.4em] text-red-500">
+                        LOADING...
+                    </p>
+
+                    <div className="mt-4 h-[2px] w-32 overflow-hidden bg-white/10">
+                        <div className="h-full w-1/2 animate-pulse bg-red-500" />
+                    </div>
+                </div>
+            )}
+
             {/* Background Video */}
             <video
                 src={FAQsvideo}
@@ -38,20 +57,24 @@ const Register = () => {
                 playsInline
                 autoPlay
                 loop
+                preload="auto"
+                onCanPlay={() => setVideoReady(true)}
             />
 
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/65" />
 
-            {/* Subtle Red Overlay */}
+            {/* Red Overlay */}
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.12),transparent_55%)]" />
 
             {/* Main Content */}
-            <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-6 text-center">
-
+            <div
+                className={`relative z-10 flex h-full w-full flex-col items-center justify-center px-6 text-center transition-opacity duration-700 ${
+                    videoReady ? "opacity-100" : "opacity-0"
+                }`}
+            >
                 {/* Small Label */}
                 <div className="mb-6 flex items-center gap-3">
-
                     <span className="h-px w-10 bg-red-500" />
 
                     <p className="text-xs font-black uppercase tracking-[0.45em] text-red-500">
@@ -59,10 +82,9 @@ const Register = () => {
                     </p>
 
                     <span className="h-px w-10 bg-red-500" />
-
                 </div>
 
-                {/* Main Heading */}
+                {/* Heading */}
                 <h1 className="max-w-5xl text-5xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-7xl md:text-8xl">
                     REGISTRATION
                     <br />
@@ -101,35 +123,14 @@ const Register = () => {
                 >
                     BACK TO HOME
                 </button>
-
             </div>
 
-            {/* Black Spider Decorations */}
-
-            
-
-            <div className="absolute top-70 right-[35%] z-100 ">
+            {/* Black Spider */}
+            <div className="pointer-events-none absolute right-[35%] top-[70px] z-20">
                 <BlackSvg />
             </div>
 
-             
-
-            {/* Moving Red Spider */}
-
-            <div
-                className="pointer-events-none fixed z-30"
-                style={{
-                    left: `${position.x}%`,
-                    top: `${position.y}%`,
-                    transform: "translate(-50%, -50%)",
-                    transition:
-                        "left 0.35s linear, top 0.35s linear",
-                }}
-            >
-            </div>
-
             {/* Bottom Text */}
-
             <div className="absolute bottom-6 left-0 z-10 w-full text-center">
                 <p className="text-[9px] font-black uppercase tracking-[0.45em] text-white/30">
                     CODEUTSAVA 8.0

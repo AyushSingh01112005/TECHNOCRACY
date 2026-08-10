@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Not from "../assets/NotFound.mp4";
@@ -7,6 +7,12 @@ import RedSpidy from "../components/RedSpidy";
 
 const NotFound = () => {
     const navigate = useNavigate();
+
+    const [videoReady, setVideoReady] = useState(false);
+
+    const handleVideoReady = () => {
+        setVideoReady(true);
+    };
 
     const [position, setPosition] = useState({
         x: 50,
@@ -33,18 +39,58 @@ const NotFound = () => {
     return (
         <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-black">
 
+            {/* Loading Screen */}
+            {!videoReady && (
+                <div className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black">
+
+                    <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/10 border-t-red-500" />
+
+                    <p className="mt-6 text-xs font-black uppercase tracking-[0.45em] text-red-500">
+                        LOADING
+                    </p>
+
+                    <p className="mt-3 text-[9px] uppercase tracking-[0.3em] text-white/30">
+                        CODEUTSAVA 10.0
+                    </p>
+
+                </div>
+            )}
+
+            {/* Background Video */}
             <video
                 src={Not}
-                className="absolute inset-0 h-full w-full object-cover"
                 muted
                 playsInline
                 autoPlay
                 loop
+                preload="auto"
+                onCanPlay={handleVideoReady}
+                className={`
+                    absolute inset-0 h-full w-full object-cover
+                    transition-opacity duration-500
+                    ${videoReady ? "opacity-100" : "opacity-0"}
+                `}
             />
 
-            <div className="absolute inset-0 bg-black/60" />
+            {/* Dark Overlay */}
+            <div
+                className={`
+                    absolute inset-0 bg-black/60
+                    transition-opacity duration-500
+                    ${videoReady ? "opacity-100" : "opacity-0"}
+                `}
+            />
 
-            <div className="relative z-10 flex h-full w-full flex-col items-center justify-center text-center">
+            {/* Main Content */}
+            <div
+                className={`
+                    relative z-10 flex h-full w-full
+                    flex-col items-center justify-center
+                    text-center
+                    transition-opacity duration-500
+                    ${videoReady ? "opacity-100" : "opacity-0"}
+                `}
+            >
 
                 <p className="mb-4 text-sm font-bold uppercase tracking-[0.5em] text-red-500">
                     ERROR 404
@@ -77,29 +123,35 @@ const NotFound = () => {
 
             </div>
 
-            <div className="absolute left-10 top-1/2 z-10 -translate-x-1/2">
-                <BlackSvg />
-            </div>
+            {/* Black Spiders */}
+            {videoReady && (
+                <>
+                    <div className="absolute left-10 top-1/2 z-10 -translate-x-1/2">
+                        <BlackSvg />
+                    </div>
 
-            <div className="absolute left-[60%] top-2/3 z-10 translate-y-1/2">
-                <BlackSvg />
-            </div>
+                    <div className="absolute left-[60%] top-2/3 z-10 translate-y-1/2">
+                        <BlackSvg />
+                    </div>
 
-            <div className="absolute right-50 top-1/2 z-10 -translate-x-1/2">
-                <BlackSvg />
-            </div>
+                    <div className="absolute right-50 top-1/2 z-10 -translate-x-1/2">
+                        <BlackSvg />
+                    </div>
 
-            <div
-                className="pointer-events-none fixed z-30"
-                style={{
-                    left: `${position.x}%`,
-                    top: `${position.y}%`,
-                    transform: "translate(-50%, -50%)",
-                    transition: "left 0.35s linear, top 0.35s linear",
-                }}
-            >
-                <RedSpidy />
-            </div>
+                    {/* Moving Red Spider */}
+                    <div
+                        className="pointer-events-none fixed z-30"
+                        style={{
+                            left: `${position.x}%`,
+                            top: `${position.y}%`,
+                            transform: "translate(-50%, -50%)",
+                            transition: "left 0.35s linear, top 0.35s linear",
+                        }}
+                    >
+                        <RedSpidy />
+                    </div>
+                </>
+            )}
 
         </div>
     );

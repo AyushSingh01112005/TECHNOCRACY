@@ -1,4 +1,4 @@
-import  chorPolice from "../assets/chorPolice.webm";
+import chorPolice from "../assets/chorPolice.webm";
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,9 +6,9 @@ const Intro = () => {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const timeoutRef = useRef(null);
-
   const [isEntered, setIsEntered] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -17,6 +17,10 @@ const Intro = () => {
       }
     };
   }, []);
+
+  const handleVideoReady = () => {
+    setVideoReady(true);
+  };
 
   const handleLoadedMetadata = () => {
     const video = videoRef.current;
@@ -94,6 +98,7 @@ const Intro = () => {
         muted
         playsInline
         preload="auto"
+        onCanPlay={handleVideoReady}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
         onTimeUpdate={handleTimeUpdate}
