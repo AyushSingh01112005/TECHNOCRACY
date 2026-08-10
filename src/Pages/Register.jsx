@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import  FAQsvideo from "../assets/FAQsvideo.mp4";
+import  FAQsvideo from "../assets/FAQsvideo.MP4";
 import BlackSvg from "../components/BlackSvg";
 
 const Register = () => {

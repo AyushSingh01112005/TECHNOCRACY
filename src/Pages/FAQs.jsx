@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FAQsvideo from "../assets/FAQsvideo.mp4";
+import FAQsvideo from "../assets/FAQsvideo.MP4";
 import RedSpidy from '../components/RedSpidy'
 
 
