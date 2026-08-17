@@ -57,13 +57,14 @@ const Navbar = () => {
     );
 
     const navItems = [
-        "Home",
-        "About",
-        "Schedule",
-        "Sponsors",
-        "Guidelines",
-        "FAQs",
-    ];
+    "Home",
+    "Events",
+    "Aavartan",
+    "Vigyaan",
+    "Ignite",
+    "Sponsors",
+    "Team",
+];
 
     const handleNavigation = (item) => {
         setIsMenuOpen(false);
@@ -85,10 +86,7 @@ const Navbar = () => {
         navigate(`/${item.toLowerCase()}`);
     };
 
-    const handleRegister = () => {
-        // Change this route if your registration page is different
-        navigate("/register");
-    };
+
 
     const isActive = (item) => {
         if (item === "Home") {
@@ -101,12 +99,12 @@ const Navbar = () => {
     return (
         <>
             {/* ================= DESKTOP / MAIN NAVBAR ================= */}
-            <nav className="fixed left-0 top-0 z-[9999] w-full px-4 pt-4 sm:px-6 lg:px-10">
+            <nav className="fixed left-0 top-0 z-[9999]   w-full  ">
 
                 <div
                     className="
                         group/navbar
-                        relative mx-auto flex max-w-[1500px]
+                       relative mx-auto flex h-[60px] max-w-[1500px]
                         items-center justify-between
                         overflow-hidden
                         border border-white/[0.08]
@@ -153,7 +151,6 @@ const Navbar = () => {
                         "
                     />
 
-                    {/* ================= LOGO ================= */}
                     <button
                         onClick={() => navigate("/home")}
                         className="
@@ -163,7 +160,7 @@ const Navbar = () => {
                             outline-none
                         "
                     >
-                        {/* Logo container */}
+                        
                         <div
                             className="
                                 relative flex h-11 w-11
@@ -177,7 +174,6 @@ const Navbar = () => {
                                 group-hover:shadow-[0_0_25px_rgba(239,68,68,0.25)]
                             "
                         >
-                            {/* Rotating border */}
                             <div
                                 className="
                                     pointer-events-none
@@ -191,46 +187,26 @@ const Navbar = () => {
                                     group-hover:opacity-100
                                 "
                             />
-
                             <SpiderLogo className="h-8 w-8" />
                         </div>
-
-                        {/* Brand text */}
                         <div className="flex  items-start justify-center items-center leading-none">
                             <span
                                 className="
-                                    text-base font-black
-                                    tracking-[0.12em]
-                                    text-white
-                                    transition-all duration-300
-                                    group-hover:text-red-50
-                                "
+                                            font-techno
+                                            text-base
+                                            font-black
+                                            tracking-[0.12em]
+                                            transition-all
+                                            duration-300
+                                        "
                             >
-                                CODEUTSAVA
+                                <span className="text-white">Techno</span>
+                                <span className="text-red-500">Cracy</span>
                             </span>
 
-                           <span
-    className="
-        mt-4
-        text-sm
-        font-black
-        tracking-[0.35em]
-        text-red-500
-        transition-all
-        duration-300
-        group-hover:text-red-400
-        group-hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.7)]
-    "
->
-    10
-</span>
                         </div>
                     </button>
-
-
-                    {/* ================= DESKTOP LINKS ================= */}
                     <div className="hidden items-center gap-1 md:flex">
-
                         {navItems.map((item) => {
                             const active = isActive(item);
 
@@ -295,88 +271,12 @@ const Navbar = () => {
                                             }
                                         `}
                                     />
-                                    
+
 
                                 </button>
                             );
                         })}
-
                     </div>
-
-
-                    {/* ================= REGISTER BUTTON ================= */}
-                    <button
-                        onClick={handleRegister}
-                        className="
-                            group/register
-                            relative hidden
-                            items-center
-                            gap-2
-                            overflow-hidden
-                            rounded-xl
-                            border border-red-500/50
-                            bg-red-600/10
-                            px-6 py-3
-                            text-xs
-                            font-black
-                            uppercase
-                            tracking-[0.18em]
-                            text-white
-                            shadow-[0_0_20px_rgba(239,68,68,0.08)]
-                            transition-all
-                            duration-300
-                            hover:scale-[1.04]
-                            hover:border-red-400
-                            hover:bg-red-600
-                            hover:shadow-[0_0_30px_rgba(239,68,68,0.35)]
-                            active:scale-95
-                            md:flex
-                        "
-                    >
-
-                        {/* Sweep */}
-                        <span
-                            className="
-                                absolute inset-y-0 -left-full
-                                w-1/2
-                                skew-x-[-20deg]
-                                bg-gradient-to-r
-                                from-transparent
-                                via-white/30
-                                to-transparent
-                                transition-all duration-700
-                                group-hover/register:left-[130%]
-                            "
-                        />
-
-                        {/* Glow */}
-                        <span
-                            className="
-                                absolute inset-0
-                                bg-red-400/0
-                                transition-all duration-300
-                                group-hover/register:bg-red-400/10
-                            "
-                        />
-
-                        <span className="relative z-10">
-                            REGISTER
-                        </span>
-
-                        <span
-                            className="
-                                relative z-10
-                                text-base
-                                transition-transform duration-300
-                                group-hover/register:translate-x-1
-                            "
-                        >
-                            →
-                        </span>
-                    </button>
-
-
-                    {/* ================= MOBILE MENU BUTTON ================= */}
                     <button
                         onClick={() => setIsMenuOpen((prev) => !prev)}
                         className="
@@ -431,11 +331,7 @@ const Navbar = () => {
 
                         </div>
                     </button>
-
                 </div>
-
-
-                {/* ================= MOBILE MENU ================= */}
                 <div
                     className={`
                         mx-auto mt-2
@@ -518,46 +414,12 @@ const Navbar = () => {
                         })}
 
 
-                        {/* Mobile register */}
-                        <button
-                            onClick={handleRegister}
-                            className="
-                                group/mobile-register
-                                relative mt-2 flex w-full
-                                items-center justify-center
-                                gap-2
-                                overflow-hidden
-                                rounded-xl
-                                border border-red-500/50
-                                bg-red-600
-                                px-5 py-3.5
-                                text-xs font-black
-                                uppercase
-                                tracking-[0.2em]
-                                text-white
-                                transition-all duration-300
-                                hover:bg-red-500
-                                hover:shadow-[0_0_25px_rgba(239,68,68,0.35)]
-                                active:scale-[0.98]
-                            "
-                        >
-                            <span>
-                                REGISTER NOW
-                            </span>
 
-                            <span
-                                className="
-                                    transition-transform duration-300
-                                    group-hover/mobile-register:translate-x-1
-                                "
-                            >
-                                →
-                            </span>
-                        </button>
+
 
                     </div>
-                </div>
 
+                </div>
             </nav>
         </>
     );

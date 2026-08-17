@@ -8,6 +8,7 @@ import About from "./Pages/About";
 import NotFound from "./Pages/NotFound";
 import FAQs from "./Pages/FAQs";
 import Register from "./Pages/Register";
+import Events from "./Pages/Events";
 
 const App = () => {
     const location = useLocation();
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/faqs" element={<FAQs />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/events" element={<Events />} />
 
                 <Route path="*" element={<NotFound />} />
             </Routes>

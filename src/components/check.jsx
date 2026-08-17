@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import redSpider from "../assets/redSpider.mp4";
 import BlackSvg from "../components/BlackSvg";
 import SpiderCrawler2 from "../components/BlackSpider2";
+import LastYearImage from "../assets/round.png";
 import TimeLine from "../components/TimeLine";
 import Guidelines from "../components/Guidelines";
 import PricePool from "../components/PricePool";
@@ -16,7 +17,6 @@ import {
     FaGithub,
     FaXTwitter,
 } from "react-icons/fa6";
-
 import FAQs from "./FAQs";
 
 const Home = () => {
@@ -25,58 +25,45 @@ const Home = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // =========================================================
-    // WHITE TRANSITION
-    // Runs only when coming from Intro "/" page
-    // =========================================================
-
     const [showTransition, setShowTransition] = useState(
         location.state?.from === "/" &&
         location.state?.whiteTransition === true
     );
 
+    // =========================================================
+    // WHITE TRANSITION
+    // Only runs when coming from "/"
+    // =========================================================
     useEffect(() => {
         const cameFromIntro =
             location.state?.from === "/" &&
             location.state?.whiteTransition === true;
 
-        // If user didn't come from Intro, don't show transition
         if (!cameFromIntro) {
             setShowTransition(false);
             return;
         }
 
-        // Start white transition
         setShowTransition(true);
 
-        // Remove transition after 5 seconds
         const timer = setTimeout(() => {
             setShowTransition(false);
 
-            // Clear navigation state
-            // This prevents animation from playing again
-            // when component rerenders
+            // Remove navigation state so animation cannot replay
             navigate(location.pathname, {
                 replace: true,
                 state: {},
             });
         }, 5000);
 
-        return () => {
-            clearTimeout(timer);
-        };
+        return () => clearTimeout(timer);
     }, [location.state, location.pathname, navigate]);
 
     // =========================================================
-    // BACKGROUND VIDEO
-    //
-    // First play:
-    // 0s → 13.4s
-    //
-    // Then:
-    // 3s → 13.4s
+    // VIDEO
+    // First play: 0s → 13.4s
+    // Then loop: 3s → 13.4s
     // =========================================================
-
     useEffect(() => {
         const video = videoRef.current;
 
@@ -89,7 +76,6 @@ const Home = () => {
             if (video.currentTime >= 13.4 && !isLooping) {
                 isLooping = true;
 
-                // Start loop from 3 seconds
                 video.currentTime = 3.0;
 
                 video.play().catch((err) => {
@@ -104,26 +90,18 @@ const Home = () => {
 
         video.addEventListener("timeupdate", handleTimeUpdate);
 
-        // Start video
         video.play().catch((err) => {
             console.log("Initial video play error:", err);
         });
 
         return () => {
-            video.removeEventListener(
-                "timeupdate",
-                handleTimeUpdate
-            );
+            video.removeEventListener("timeupdate", handleTimeUpdate);
 
             if (resetTimer) {
                 clearTimeout(resetTimer);
             }
         };
     }, []);
-
-    // =========================================================
-    // SCROLL POSITION
-    // =========================================================
 
     useEffect(() => {
         if (location.state?.scrollTo === undefined) return;
@@ -139,17 +117,7 @@ const Home = () => {
     }, [location.state?.scrollTo]);
 
     return (
-        <>
-            {/* =====================================================
-                BLACK SVG
-            ====================================================== */}
-
-            <BlackSvg />
-
-            {/* =====================================================
-                WHITE INTRO TRANSITION
-            ====================================================== */}
-
+        <><BlackSvg />
             {showTransition && (
                 <div
                     className="
@@ -163,15 +131,7 @@ const Home = () => {
                 />
             )}
 
-            {/* =====================================================
-                MAIN PAGE
-            ====================================================== */}
-
-            <div className="relative min-h-screen">
-
-                {/* =================================================
-                    BACKGROUND VIDEO
-                ================================================== */}
+            <div className="relative min-h-screen ">
 
                 <video
                     ref={videoRef}
@@ -189,8 +149,7 @@ const Home = () => {
                     "
                 />
 
-                {/* Dark Overlay */}
-
+                {/* Dark overlay */}
                 <div
                     className="
                         pointer-events-none
@@ -201,8 +160,7 @@ const Home = () => {
                     "
                 />
 
-                {/* Red Radial Glow */}
-
+                {/* Red radial glow */}
                 <div
                     className="
                         pointer-events-none
@@ -213,15 +171,7 @@ const Home = () => {
                     "
                 />
 
-                {/* =================================================
-                    CONTENT
-                ================================================== */}
-
                 <div className="relative z-10">
-
-                    {/* =================================================
-                        HERO SECTION
-                    ================================================== */}
 
                     <section
                         className="
@@ -235,9 +185,7 @@ const Home = () => {
                             py-12
                         "
                     >
-
                         {/* Cyber Grid */}
-
                         <div
                             className="
                                 pointer-events-none
@@ -249,8 +197,7 @@ const Home = () => {
                             "
                         />
 
-                        {/* Top Red Glow */}
-
+                        {/* Ambient red glow */}
                         <div
                             className="
                                 pointer-events-none
@@ -266,8 +213,6 @@ const Home = () => {
                             "
                         />
 
-                        {/* Bottom Red Glow */}
-
                         <div
                             className="
                                 pointer-events-none
@@ -282,10 +227,6 @@ const Home = () => {
                                 blur-[100px]
                             "
                         />
-
-                        {/* =================================================
-                            SOCIAL SIDEBAR
-                        ================================================== */}
 
                         <aside
                             className="
@@ -308,17 +249,7 @@ const Home = () => {
                                 md:flex
                             "
                         >
-
-                            <div
-                                className="
-                                    h-12
-                                    w-px
-                                    bg-gradient-to-b
-                                    from-transparent
-                                    via-red-500
-                                    to-red-500
-                                "
-                            />
+                            <div className="h-12 w-px bg-gradient-to-b from-transparent via-red-500 to-red-500" />
 
                             {[
                                 {
@@ -377,22 +308,8 @@ const Home = () => {
                                 );
                             })}
 
-                            <div
-                                className="
-                                    h-12
-                                    w-px
-                                    bg-gradient-to-b
-                                    from-red-500
-                                    via-red-500/50
-                                    to-transparent
-                                "
-                            />
-
+                            <div className="h-12 w-px bg-gradient-to-b from-red-500 via-red-500/50 to-transparent" />
                         </aside>
-
-                        {/* =================================================
-                            HERO CONTENT
-                        ================================================== */}
 
                         <div
                             className="
@@ -407,9 +324,7 @@ const Home = () => {
                                 text-center
                             "
                         >
-
                             {/* Badge */}
-
                             <div
                                 className="
                                     group
@@ -431,9 +346,7 @@ const Home = () => {
                                     hover:shadow-[0_0_35px_rgba(220,38,38,0.35)]
                                 "
                             >
-
                                 <span className="relative flex h-2.5 w-2.5">
-
                                     <span
                                         className="
                                             absolute
@@ -457,7 +370,6 @@ const Home = () => {
                                             bg-red-600
                                         "
                                     />
-
                                 </span>
 
                                 <span
@@ -471,13 +383,9 @@ const Home = () => {
                                 >
                                     EDITION 26
                                 </span>
-
                             </div>
 
-                            {/* =================================================
-                                TITLE
-                            ================================================== */}
-
+                            {/* Heading */}
                             <h1
                                 className="
                                     relative
@@ -497,15 +405,11 @@ const Home = () => {
                                     lg:text-9xl
                                 "
                             >
-                                🕷️
-                                <br />
+                                🕷️<br />
                                 TECHNOCRACY
                             </h1>
 
-                            {/* =================================================
-                                SUBTITLE
-                            ================================================== */}
-
+                            {/* Subtitle */}
                             <h2
                                 className="
                                     mt-3
@@ -528,31 +432,10 @@ const Home = () => {
                             </h2>
 
                             {/* Divider */}
-
-                            <div
-                                className="
-                                    my-6
-                                    h-0.5
-                                    w-32
-                                    bg-gradient-to-r
-                                    from-transparent
-                                    via-red-600
-                                    to-transparent
-                                "
-                            />
-
+                            <div className="my-6 h-0.5 w-32 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
                             <div className="h-4" />
-
-                            {/* Tagline */}
-
-                            <div
-                                className="
-                                    flex
-                                    flex-col
-                                    items-center
-                                    gap-2
-                                "
-                            >
+                            {/* Taglines */}
+                            <div className="flex flex-col items-center gap-2">
                                 <p
                                     className="
                                         text-[11px]
@@ -569,177 +452,103 @@ const Home = () => {
 
                             <div className="h-10" />
 
-                            {/* =================================================
-                                EVENT BUTTONS
-                            ================================================== */}
-
                             <div
                                 className="
-                                    flex
-                                    flex-row
-                                    items-center
-                                    justify-center
-                                    gap-80
-                                "
+         
+        flex
+        flex-row
+        items-center
+        justify-center
+        gap-80
+    "
                             >
-
-                                {/* VIGYAAN */}
-
                                 <button
-                                    onClick={() => {
-                                        navigate("/vigyaan");
-                                    }}
+                                    onClick={() => { navigate("/vigyaan") }}
                                     className="
-                                        group
-                                        flex
-                                        min-h-[50px]
-                                        min-w-[200px]
-                                        items-center
-                                        justify-center
-                                        rounded-full
-                                        bg-red-600
-                                        px-14
-                                        py-6
-                                        text-base
-                                        font-black
-                                        tracking-[0.25em]
-                                        text-white
-                                        shadow-[0_0_25px_rgba(220,38,38,0.5)]
-                                        transition-all
-                                        duration-300
-                                        hover:scale-105
-                                        hover:bg-red-500
-                                        hover:shadow-[0_0_40px_rgba(220,38,38,0.8)]
-                                    "
+            group
+            flex
+            min-h-[50px]
+            min-w-[200px]
+            items-center
+            justify-center
+            rounded-full
+            bg-red-600
+            px-14
+            py-6
+            text-base
+            font-black
+            tracking-[0.25em]
+            text-white
+            shadow-[0_0_25px_rgba(220,38,38,0.5)]
+            transition-all
+            duration-300
+            hover:scale-105
+            hover:bg-red-500
+            hover:shadow-[0_0_40px_rgba(220,38,38,0.8)]
+        "
                                 >
                                     <span className="flex items-center gap-3">
                                         VIGYAAN
                                     </span>
                                 </button>
 
-                                {/* IGNITE */}
-
                                 <button
-                                    onClick={() => {
-                                        navigate("/ignite");
-                                    }}
+                                    onClick={() => { navigate("/ignite") }}
                                     className="
-                                        group
-                                        flex
-                                        min-h-[50px]
-                                        min-w-[200px]
-                                        items-center
-                                        justify-center
-                                        rounded-full
-                                        bg-red-600
-                                        px-14
-                                        py-6
-                                        text-base
-                                        font-black
-                                        tracking-[0.25em]
-                                        text-white
-                                        shadow-[0_0_25px_rgba(220,38,38,0.5)]
-                                        transition-all
-                                        duration-300
-                                        hover:scale-105
-                                        hover:bg-red-500
-                                        hover:shadow-[0_0_40px_rgba(220,38,38,0.8)]
-                                    "
+            group
+            flex
+            min-h-[50px]
+            min-w-[200px]
+            items-center
+            justify-center
+            rounded-full
+            bg-red-600
+            px-14
+            py-6
+            text-base
+            font-black
+            tracking-[0.25em]
+            text-white
+            shadow-[0_0_25px_rgba(220,38,38,0.5)]
+            transition-all
+            duration-300
+            hover:scale-105
+            hover:bg-red-500
+            hover:shadow-[0_0_40px_rgba(220,38,38,0.8)]
+        "
                                 >
                                     IGNITE
                                 </button>
-
                             </div>
-
                         </div>
                     </section>
-
-                    {/* =====================================================
-                        ABOUT SECTION
-                    ====================================================== */}
-
-                    <section
-                        className="
-                            relative
-                            flex
-                            w-full
-                            justify-center
-                            overflow-hidden
-                        "
-                    >
+                    //About
+                    <section className="relative flex w-full justify-center overflow-hidden">
                         <div className="mx-auto max-w-6xl px-6">
-
                             <div className="text-center">
                                 <About1 />
                             </div>
-
                         </div>
                     </section>
 
-                    <div className="h-20" />
+                    <div className="h-20"></div>
 
-                    {/* =====================================================
-                        FAQ SECTION
-                    ====================================================== */}
-
+                    //FAQS
                     <FAQs />
 
-                    {/* =====================================================
-                        FOOTER SPACING
-                    ====================================================== */}
 
+                    {/* Footer */}
                     <div className="h-32 w-full" />
-
-                    {/* =====================================================
-                        FOOTER
-                    ====================================================== */}
-
                     <BottomHome />
-
                 </div>
-
-                {/* =========================================================
-                    BLACK SVG
-                ========================================================== */}
 
                 <BlackSvg />
-
-                {/* =========================================================
-                    SPIDER CRAWLER
-                ========================================================== */}
-
-                <div
-                    className="
-                        creepy-crawler
-                        pointer-events-none
-                        fixed
-                        z-[79]
-                    "
-                >
+                <div className="creepy-crawler pointer-events-none fixed z-79">
                     <SpiderCrawler2 />
                 </div>
-
             </div>
 
-            {/* =============================================================
-                WHITE TRANSITION ANIMATION
-            ============================================================= */}
 
-            <style>{`
-                @keyframes homeWhite {
-                    0% {
-                        opacity: 1;
-                    }
-
-                    100% {
-                        opacity: 0;
-                    }
-                }
-
-                .animate-home-white {
-                    animation: homeWhite 5s ease-in-out forwards;
-                }
-            `}</style>
         </>
     );
 };

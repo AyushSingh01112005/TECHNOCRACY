@@ -1,189 +1,465 @@
-import React from 'react';
+import React from "react";
 import {
     FaInstagram,
     FaYoutube,
     FaFacebookF,
-    FaLinkedinIn,
+    FaLinkedin,
     FaGithub,
     FaXTwitter,
     FaEnvelope,
-    FaPhone,
     FaLocationDot,
     FaArrowUp,
 } from "react-icons/fa6";
-import nit from "../assets/nit.png"
+import nit from "../assets/nit.png";
 
 const BottomHome = () => {
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     };
 
     const socials = [
-        { icon: FaInstagram, href: "https://www.instagram.com/codeutsavanitrr/", label: "Instagram" },
-        { icon: FaFacebookF, href: "https://www.facebook.com/codeutsava/", label: "Facebook" },
-        { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/codeutsava/", label: "LinkedIn" },
-        { icon: FaXTwitter, href: "https://x.com/codeutsavanitrr?lang=en", label: "X" },
-        { icon: FaGithub, href: "https://github.com/TCP-Tech", label: "GitHub" },
+        {
+            icon: FaInstagram,
+            href: "https://www.instagram.com/",
+            label: "Instagram",
+        },
+        {
+            icon: FaYoutube,
+            href: "https://www.youtube.com/",
+            label: "YouTube",
+        },
+        {
+            icon: FaFacebookF,
+            href: "https://www.facebook.com/",
+            label: "Facebook",
+        },
+        {
+            icon: FaLinkedin,
+            href: "https://www.linkedin.com/",
+            label: "LinkedIn",
+        },
+        {
+            icon: FaXTwitter,
+            href: "https://x.com/",
+            label: "X",
+        },
+        {
+            icon: FaGithub,
+            href: "https://github.com/",
+            label: "GitHub",
+        },
     ];
 
-
+    const navigation = [
+        { name: "Technocracy", href: "#home" },
+        { name: "Aavartan", href: "#aavartan" },
+        { name: "Vigyaan", href: "#vigyaan" },
+        { name: "Ignite", href: "#ignite" },
+        { name: "Sponsors", href: "#sponsors" },
+        { name: "Team", href: "#team" },
+    ];
 
     return (
         <footer
             id="contact"
-            className="relative w-full overflow-hidden bg-gradient-to-b z-100 from-black/30 via-black/60 to-black text-white"
+            className="relative z-[100] w-full overflow-hidden bg-black text-white"
         >
+            {/* TOP RED LINE */}
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-red-600 to-transparent shadow-[0_0_20px_rgba(220,38,38,0.8)]" />
 
-            <div className="relative h-px w-full bg-gradient-to-r from-transparent via-red-600 to-transparent" />
-            <div className="mx-auto h-px w-2/3 bg-gradient-to-r from-transparent via-red-900/40 to-transparent" />
+            {/* RED GLOW */}
+            <div
+                className="pointer-events-none absolute -top-40 left-1/2 h-[35rem] w-[70rem] -translate-x-1/2 rounded-full bg-red-900/10 blur-[150px]"
+            />
 
-            <div className="pointer-events-none absolute -top-32 left-1/2 h-[28rem] w-[60rem] -translate-x-1/2 rounded-full bg-red-900/8 blur-[140px]" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)]" />
+            {/* GRID */}
+            <div
+                className="pointer-events-none absolute inset-0 opacity-30"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #ffffff05 1px, transparent 1px), linear-gradient(to bottom, #ffffff05 1px, transparent 1px)`,
+                    backgroundSize: '4rem 4rem',
+                    maskImage: 'radial-gradient(ellipse 70% 60% at 50% 30%, #000 50%, transparent 100%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 30%, #000 50%, transparent 100%)',
+                }}
+            />
 
-            <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-24">
-             <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:gap-24">
-
-                    <div className="space-y-8">
-
-                        <div className="flex items-center gap-5">
-                            <div className="relative flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-red-500/20 bg-black/10 p-1 shadow-[0_0_30px_rgba(220,38,38,0.15)]">
+            {/* MAIN CONTENT */}
+            <div className="relative z-10 mx-auto w-full  px-6 py-20 md:px-10 md:py-24">
+                <div className="mx-auto grid w-full   grid-cols-1 gap-6 md:grid-cols-3 ">
+                    
+                    {/* BRAND */}
+                    <div className="flex flex-col items-center text-center">
+                        <div className="flex flex-col items-center gap-2">
+                            {/* NIT LOGO */}
+                            <div className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-red-500/30 bg-black p-2 shadow-[0_0_40px_rgba(220,38,38,0.2)]">
                                 <img
                                     src={nit}
                                     alt="NIT Raipur"
-                                    className="h-full w-full scale-115
-                                     object-contain"
-                                    onError={(e) => {
-                                        e.target.style.display = 'none';
-                                        e.target.parentNode.innerHTML = '<span class="text-red-500 font-black text-xl">NIT</span>';
-                                    }}
+                                    className="h-full w-full scale-114 object-contain"
                                 />
-                                {/* Glow ring */}
-                                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-red-500/10" />
+                                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-red-500/30" />
                             </div>
 
                             <div>
-                                <h3 className="text-lg font-black tracking-[0.2em] text-white uppercase">
-                                    NIT Raipur
-                                </h3>
-                                <p className="mt-0.5 text-[11px] font-bold tracking-[0.3em] text-red-500 uppercase">
-                                    Institute of National Importance
+                                <h2 className="text-2xl font-black uppercase tracking-[0.18em] text-white">
+                                    TECHNO<span className="text-red-500">CRACY</span>
+                                </h2>
+                                <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-500">
+                                    Technical Committee • NIT Raipur
                                 </p>
                             </div>
                         </div>
 
-                        {/* Description */}
-                        <p className="max-w-md text-sm leading-[1.8] text-neutral-400">
-                            National Institute of Technology Raipur is committed to the challenging task of
-                            developing technical education by preparing seasoned graduates in highly sophisticated
-                            fields of engineering and technology. For over five decades, NIT Raipur has been
-                            shaping the future with sincerity and commitment.
+                        <p className=" max-w-sm text-sm leading-5 text-neutral-500">
+                            Building a community where technology meets creativity, 
+                            innovation meets curiosity, and students transform ideas into impact.
                         </p>
 
-                        {/* Social Icons */}
-                        <div className="flex items-center gap-3">
-                            {socials.map((social, idx) => {
-                                const Icon = social.icon;
-                                return (
-                                    <a
-                                        key={idx}
-                                        href={social.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={social.label}
-                                        className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-neutral-400 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-red-500/40 hover:bg-red-950/20 hover:text-red-500 hover:shadow-[0_0_20px_rgba(220,38,38,0.35)]"
-                                    >
-                                        <Icon size={15} className="transition-transform duration-300 group-hover:scale-110" />
-                                    </a>
-                                );
-                            })}
-                        </div>
+                        {/* SOCIALS */}
+                         
                     </div>
 
+                    {/* EXPLORE */}
+                    <div className="flex flex-col items-center text-center">
+                        <div className="mb-8 flex items-center gap-5">
+                            <span className="h-2 w-2 rounded-full bg-red-600 shadow-[0_0_12px_rgba(220,38,38,0.9)]" />
+                            <h3 className="text-xs font-black uppercase tracking-[0.3em] text-white">
+                                Explore
+                            </h3>
+                        </div><div className="h-5"></div>
 
-
-                  <div className="md:justify-self-end md:w-full lg:max-w-md">
-                        <h4 className="mb-8 flex items-center gap-3 text-sm font-black tracking-[0.25em] text-white uppercase">
-                            <span className="h-2 w-2 rounded-full bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.8)]" />
-                            Contact
-                        </h4>
-
-                        <div className="space-y-5">
-                            <div className="flex items-start gap-4">
-                                <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-red-500">
-                                    <FaLocationDot size={14} />
-                                </div>
-                                <p className="text-sm leading-relaxed text-neutral-400">
-                                    Great Eastern Rd, Amanaka,<br />
-                                    Raipur, Chhattisgarh — 492010
-                                </p> 
-                            </div>
-
-                            <div className="flex items-center gap-4">
-                                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-red-500">
-                                    <FaEnvelope size={14} />
-                                </div>
+                        <nav className="flex flex-col items-center gap-3">
+                            {navigation.map((item) => (
                                 <a
-                                    href="mailto:codeutsava@nitrr.ac.in"
-                                    className="text-sm text-neutral-400 transition-colors duration-300 hover:text-red-500"
+                                    key={item.name}
+                                    href={item.href}
+                                    className="group flex items-center gap-8 text-xs font-bold uppercase tracking-[0.18em] text-neutral-500 transition-all duration-300 hover:translate-x-1 hover:text-white"
                                 >
-                                    codeutsava@nitrr.ac.in
+                                    <span className="h-px w-0 bg-red-500 transition-all duration-300 group-hover:w-5" />
+                                    {item.name}
                                 </a>
-                            </div>
-
-                            <div className="flex items-center gap-4">
-                                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-red-500">
-                                    <FaPhone size={14} />
-                                </div>
-                                <a
-                                    href="tel:+917712254001"
-                                    className="text-sm text-neutral-400 transition-colors duration-300 hover:text-red-500"
-                                >
-                                    +91 771 225 4001
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="mt-8 flex items-center gap-4 rounded-xl border border-white/5 bg-gradient-to-br from-white/[0.03] to-transparent p-4 backdrop-blur-sm">
-                            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-600/10 text-red-500 ring-1 ring-red-500/20">
-                                <span className="text-xl font-black">C</span>
-                            </div>
-                            <div>
-                                <p className="text-[10px] font-bold tracking-[0.3em] text-neutral-500 uppercase">
-                                    Organized By
-                                </p>
-                                <p className="mt-0.5 text-sm font-black tracking-[0.15em] text-white uppercase">
-                                    CodeUtsava 10.0
-                                </p>
-                            </div>
-                        </div>
+                            ))}
+                        </nav>
                     </div>
-                </div>
+
+                    {/* CONTACT */}
+                   <div className="flex flex-col items-center text-center">
+
+    {/* ================= CONTACT HEADING ================= */}
+    <div className="mb-9 flex items-center gap-3">
+        <span
+            className="
+                h-2
+                w-2
+                rounded-full
+                bg-red-600
+                shadow-[0_0_12px_rgba(220,38,38,0.9)]
+            "
+        />
+
+        <h3
+            className="
+                text-xs
+                font-black
+                uppercase
+                tracking-[0.3em]
+                text-white
+            "
+        >
+            Contact
+        </h3>
+    </div>
+    <div className="h-5"></div>
+
+    {/* ================= CONTACT ITEMS ================= */}
+    <div className="flex w-full max-w-sm flex-col gap-4">
+
+        {/* EMAIL 1 */}
+        <a
+            href="mailto:nitrr.technocracy@gmail.com"
+            className="
+                group
+                flex
+                items-center
+                gap-4
+                rounded-xl
+                border
+                border-white/[0.06]
+                bg-white/[0.02]
+                px-4
+                py-3
+                text-left
+                backdrop-blur-xl
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-red-500/30
+                hover:bg-red-950/10
+                hover:shadow-[0_8px_30px_rgba(220,38,38,0.12)]
+            "
+        >
+            <div
+                className="
+                    flex
+                    h-10
+                    w-10
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-lg
+                    border
+                    border-white/10
+                    bg-black/40
+                    text-red-500
+                    transition-all
+                    duration-300
+                    group-hover:border-red-500/40
+                    group-hover:bg-red-950/30
+                    group-hover:shadow-[0_0_18px_rgba(220,38,38,0.25)]
+                "
+            >
+                <FaEnvelope size={14} />
             </div>
 
-            <div className="relative border-t border-white/[0.04] bg-black/40 backdrop-blur-2xl">
-                <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 md:flex-row md:px-12">
+            <div className="min-w-0">
+                <p
+                    className="
+                        mb-1
+                        text-[8px]
+                        font-black
+                        uppercase
+                        tracking-[0.25em]
+                        text-neutral-600
+                    "
+                >
+                    Email
+                </p>
 
-                    <p className="text-[11px] font-bold tracking-[0.2em] text-neutral-600 uppercase">
-                        © 2026 CodeUtsava 10.0 • All Rights Reserved
+                <p
+                    className="
+                        truncate
+                        text-sm
+                        font-medium
+                        text-neutral-400
+                        transition-colors
+                        duration-300
+                        group-hover:text-red-400
+                    "
+                >
+                    nitrr.technocracy@gmail.com
+                </p>
+            </div>
+        </a>
+
+        {/* EMAIL 2 */}
+        <a
+            href="mailto:aavartan@nitrr.ac.in"
+            className="
+                group
+                flex
+                items-center
+                gap-4
+                rounded-xl
+                border
+                border-white/[0.06]
+                bg-white/[0.02]
+                px-4
+                py-3
+                text-left
+                backdrop-blur-xl
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-red-500/30
+                hover:bg-red-950/10
+                hover:shadow-[0_8px_30px_rgba(220,38,38,0.12)]
+            "
+        >
+            <div
+                className="
+                    flex
+                    h-10
+                    w-10
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-lg
+                    border
+                    border-white/10
+                    bg-black/40
+                    text-red-500
+                    transition-all
+                    duration-300
+                    group-hover:border-red-500/40
+                    group-hover:bg-red-950/30
+                    group-hover:shadow-[0_0_18px_rgba(220,38,38,0.25)]
+                "
+            >
+                <FaEnvelope size={14} />
+            </div>
+
+            <div className="min-w-0">
+                <p
+                    className="
+                        mb-1
+                        text-[8px]
+                        font-black
+                        uppercase
+                        tracking-[0.25em]
+                        text-neutral-600
+                    "
+                >
+                    Official Mail
+                </p>
+
+                <p
+                    className="
+                        truncate
+                        text-sm
+                        font-medium
+                        text-neutral-400
+                        transition-colors
+                        duration-300
+                        group-hover:text-red-400
+                    "
+                >
+                    aavartan@nitrr.ac.in
+                </p>
+            </div>
+        </a>
+
+        {/* LOCATION */}
+        <div
+            className="
+                flex
+                items-center
+                gap-4
+                rounded-xl
+                border
+                border-white/[0.06]
+                bg-white/[0.02]
+                px-4
+                py-3
+                text-left
+                backdrop-blur-xl
+            "
+        >
+            <div
+                className="
+                    flex
+                    h-10
+                    w-10
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-lg
+                    border
+                    border-white/10
+                    bg-black/40
+                    text-red-500
+                "
+            >
+                <FaLocationDot size={14} />
+            </div>
+
+            <div>
+                <p
+                    className="
+                        mb-1
+                        text-[8px]
+                        font-black
+                        uppercase
+                        tracking-[0.25em]
+                        text-neutral-600
+                    "
+                >
+                    Location
+                </p>
+
+                <p className="text-sm leading-5 text-neutral-400">
+                    NIT Raipur
+                    <br />
+                    Raipur, Chhattisgarh{" "}
+                    <span className="text-neutral-600">
+                        • 492013
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {/* ================= CONNECT BOX ================= */}
+    <div
+        className="
+            group
+            relative
+            mt-7
+            w-full
+            max-w-sm
+            overflow-hidden
+            rounded-xl
+            border
+            border-red-500/10
+            bg-gradient-to-br
+            from-red-950/20
+            via-white/[0.02]
+            to-transparent
+            p-5
+            text-center
+            backdrop-blur-xl
+            transition-all
+            duration-300
+            hover:border-red-500/25
+            hover:shadow-[0_0_35px_rgba(220,38,38,0.1)]
+        "
+    >
+        {/* Glow */}
+        <div
+            className="
+                pointer-events-none
+                absolute
+                -right-10
+                -top-10
+                h-24
+                w-24
+                rounded-full
+                bg-red-600/10
+                blur-2xl
+                transition-all
+                duration-500
+                group-hover:bg-red-600/20
+            "
+        />
+
+        
+    </div>
+</div>
+                </div>
+
+                {/* DIVIDER */}
+                <div className="mt-20 h-px w-full bg-gradient-to-r from-transparent via-red-900/50 to-transparent" />
+            </div>
+
+            {/* BOTTOM BAR */}
+            <div className="relative z-10 border-t border-white/[0.04] bg-black/60 backdrop-blur-2xl">
+                <div className="mx-auto flex   flex-col items-center justify-center  px-6 py- text-center md:flex-row md:justify-between md:px-12">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-neutral-700">
+                        © 2026 Team Technocracy • NIT Raipur
                     </p>
-
-                    <div className="flex items-center gap-8">
-                        <a href="#" className="text-[11px] font-bold tracking-[0.2em] text-neutral-600 uppercase transition-colors duration-300 hover:text-red-500">
-                            Privacy
-                        </a>
-                        <a href="#" className="text-[11px] font-bold tracking-[0.2em] text-neutral-600 uppercase transition-colors duration-300 hover:text-red-500">
-                            Terms
-                        </a>
-                    </div>
-
+                    <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-neutral-700">
+                        BUILT WITH <span className="text-red-500">PASSION</span> & CODE
+                    </p>
                     <button
                         onClick={scrollToTop}
                         aria-label="Back to top"
-                        className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-neutral-500 transition-all duration-300 hover:border-red-500/40 hover:bg-red-950/20 hover:text-red-500 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
+                        className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-neutral-500 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/50 hover:bg-red-950/20 hover:text-red-500 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
                     >
                         <FaArrowUp
                             size={13}
-                            className="transition-transform duration-300 group-hover:-translate-y-0.5"
+                            className="transition-transform duration-300 group-hover:-translate-y-1"
                         />
                     </button>
                 </div>

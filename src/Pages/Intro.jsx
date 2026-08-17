@@ -1,6 +1,7 @@
 import chorPolice from "../assets/chorPolice.webm";
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import SpiderCrawler2 from "../components/BlackSpider2";
 
 const Intro = () => {
   const videoRef = useRef(null);
@@ -110,7 +111,7 @@ const Intro = () => {
           pointer-events-none
           fixed
           inset-0
-          z-100
+          z-50
           bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]
         "
       />
@@ -121,7 +122,7 @@ const Intro = () => {
             pointer-events-none
             fixed
             inset-0
-            z-[99999]
+            z-[1000]
             bg-white
             animate-white-cover
           "
@@ -132,7 +133,6 @@ const Intro = () => {
         <div
           className="
             relative
-            z-50
             flex
             min-h-screen
             flex-col
@@ -149,7 +149,7 @@ const Intro = () => {
               className="
                 pointer-events-none
                 absolute
-                right-[23%]
+                right-[16%]
                 top-1/2
                 z-10
                 h-48
@@ -304,44 +304,54 @@ const Intro = () => {
               </g>
             </svg>
 
-            <h1
-              className="
-                relative
-                
-                bg-gradient-to-b
-                from-white
-                via-gray-100
-                to-gray-400
-                bg-clip-text
-                text-5xl
-                font-black
-                tracking-[0.15em]
-                text-transparent
-                drop-shadow-2xl
-                sm:text-7xl
-                md:text-8xl
-              "
-            >
-              CODEUTSAVA 10.0
-            </h1>
-          </div>
 
-          <h2
-            className="
-              relative
-              z-10
-              mt-2
-              text-xl
-              font-bold
-              tracking-[0.3em]
-              text-red-500
-              drop-shadow-[0_0_12px_rgba(239,68,68,0.5)]
-              sm:text-3xl
-              md:text-4xl
-            "
-          >
-            THE WEB OF CODERS
-          </h2>
+            <h1
+  className="
+    relative
+    z-20
+    bg-gradient-to-b
+    from-white
+    via-gray-200
+    to-gray-500
+    bg-clip-text
+    text-transparent
+
+    text-5xl
+    sm:text-7xl
+    md:text-8xl
+
+    font-black
+    uppercase
+    tracking-[0.18em]
+    leading-[0.85]
+    animate-title-in
+
+    drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]
+    [text-shadow:0_0_25px_rgba(239,68,68,0.25)]
+
+    transition-all
+    duration-500
+    hover:tracking-[0.24em]
+  "
+>
+  TEAM <br />
+  <span className="text-white">TECHNO</span>
+  <span
+    className="
+      bg-gradient-to-r
+      from-red-500
+      via-red-400
+      to-red-600
+      bg-clip-text
+      text-transparent
+    "
+  >
+    CRACY
+  </span>
+</h1>
+          </div>
+          <div className="min-h-3"> </div>
+
 
           <div className="h-10" />
 
@@ -372,6 +382,7 @@ const Intro = () => {
               transition-all
               duration-300
               ease-out
+              
 
               hover:scale-105
               hover:border-red-400
@@ -453,6 +464,8 @@ const Intro = () => {
                 transition-all
                 duration-300
                 group-hover:tracking-[0.5em]
+                 animate-title-in
+
               "
             >
               ENTER
@@ -474,652 +487,20 @@ const Intro = () => {
               →
             </span>
           </button>
-          <div
-            className="
-              relative
-              mt-8
-              w-32
-              animate-spider-bob
-              sm:w-40
-            "
-          >
-            <div
-              className="
-                absolute
-                -top-[150px]
-                left-1/2
-                h-[150px]
-                w-[2.5px]
-                -translate-x-1/2
-                bg-gradient-to-b
-                from-transparent
-                via-white/80
-                to-white
-                shadow-[0_0_8px_rgba(255,255,255,0.8)]
-              "
-            />
 
-            <svg
-              viewBox="0 0 160 160"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <radialGradient
-                  id="v-abdomenShell"
-                  cx="30%"
-                  cy="25%"
-                  r="75%"
-                >
-                  <stop offset="0%" stopColor="#2a1212" />
-                  <stop offset="25%" stopColor="#140505" />
-                  <stop offset="65%" stopColor="#080202" />
-                  <stop offset="92%" stopColor="#030000" />
-                  <stop offset="100%" stopColor="#000000" />
-                </radialGradient>
 
-                <radialGradient
-                  id="v-carapaceShell"
-                  cx="35%"
-                  cy="30%"
-                  r="65%"
-                >
-                  <stop offset="0%" stopColor="#3d1818" />
-                  <stop offset="40%" stopColor="#1a0808" />
-                  <stop offset="80%" stopColor="#0a0202" />
-                  <stop offset="100%" stopColor="#000000" />
-                </radialGradient>
 
-                <linearGradient
-                  id="v-legSeg"
-                  x1="0%"
-                  y1="0%"
-                  x2="0%"
-                  y2="100%"
-                >
-                  <stop offset="0%" stopColor="#1f0a0a" />
-                  <stop offset="40%" stopColor="#0d0404" />
-                  <stop offset="100%" stopColor="#000000" />
-                </linearGradient>
+          <div className="relative mt-8 z-30 w-32 sm:w-40 animate-spider-bob">
 
-                <radialGradient
-                  id="v-specular"
-                  cx="35%"
-                  cy="30%"
-                  r="55%"
-                >
-                  <stop
-                    offset="0%"
-                    stopColor="#ffffff"
-                    stopOpacity="0.18"
-                  />
+            <div className="spider-silk" />
 
-                  <stop
-                    offset="25%"
-                    stopColor="#ffffff"
-                    stopOpacity="0.05"
-                  />
+            <SpiderCrawler2  className=" animate-title-in" />
 
-                  <stop
-                    offset="100%"
-                    stopColor="#ffffff"
-                    stopOpacity="0"
-                  />
-                </radialGradient>
-
-                <radialGradient
-                  id="v-redGlow"
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                >
-                  <stop
-                    offset="0%"
-                    stopColor="#dc2626"
-                    stopOpacity="0.7"
-                  />
-
-                  <stop
-                    offset="50%"
-                    stopColor="#991b1b"
-                    stopOpacity="0.3"
-                  />
-
-                  <stop
-                    offset="100%"
-                    stopColor="#000000"
-                    stopOpacity="0"
-                  />
-                </radialGradient>
-
-                <radialGradient
-                  id="v-eyeLens"
-                  cx="35%"
-                  cy="30%"
-                  r="65%"
-                >
-                  <stop offset="0%" stopColor="#ffffff" />
-                  <stop offset="20%" stopColor="#fca5a5" />
-                  <stop offset="55%" stopColor="#7f1d1d" />
-                  <stop offset="100%" stopColor="#000000" />
-                </radialGradient>
-
-                <filter
-                  id="v-threadGlow"
-                  x="-50%"
-                  y="-50%"
-                  width="200%"
-                  height="200%"
-                >
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="1"
-                    result="blur"
-                  />
-
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-
-                <filter
-                  id="v-softShadow"
-                  x="-40%"
-                  y="-40%"
-                  width="180%"
-                  height="180%"
-                >
-                  <feGaussianBlur
-                    in="SourceAlpha"
-                    stdDeviation="3"
-                  />
-
-                  <feOffset
-                    dx="2"
-                    dy="3"
-                    result="offsetblur"
-                  />
-
-                  <feComponentTransfer>
-                    <feFuncA
-                      type="linear"
-                      slope="0.5"
-                    />
-                  </feComponentTransfer>
-
-                  <feMerge>
-                    <feMergeNode />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              <line
-                x1="80"
-                y1="10"
-                x2="80"
-                y2="38"
-                stroke="#ffffff"
-                strokeWidth="3"
-                opacity="0.4"
-                filter="url(#v-threadGlow)"
-              />
-
-              <line
-                x1="80"
-                y1="0"
-                x2="80"
-                y2="38"
-                stroke="#ffffff"
-                strokeWidth="1.8"
-                opacity="0.9"
-              />
-
-
-              <g className="v-spider-limb animate-fast-l4">
-                <path
-                  d="M66 86 Q48 72 30 64"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M30 64 Q14 58 4 50"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M4 50 Q2 46 3 42"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="30" cy="64" r="3.2" fill="#0a0202" />
-                <circle cx="4" cy="50" r="2.2" fill="#0a0202" />
-              </g>
-
-              <g className="v-spider-limb animate-fast-r4">
-                <path
-                  d="M94 86 Q112 72 130 64"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M130 64 Q146 58 156 50"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M156 50 Q158 46 157 42"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="130" cy="64" r="3.2" fill="#0a0202" />
-                <circle cx="156" cy="50" r="2.2" fill="#0a0202" />
-              </g>
-
-              <g className="v-spider-limb animate-fast-l3">
-                <path
-                  d="M68 90 Q48 84 26 80"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5.2"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M26 80 Q10 78 2 70"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M2 70 Q0 66 1 62"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="26" cy="80" r="3.2" fill="#0a0202" />
-                <circle cx="2" cy="70" r="2.2" fill="#0a0202" />
-              </g>
-
-              <g className="v-spider-limb animate-fast-r3">
-                <path
-                  d="M92 90 Q112 84 134 80"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5.2"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M134 80 Q150 78 158 70"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M158 70 Q160 66 159 62"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="134" cy="80" r="3.2" fill="#0a0202" />
-                <circle cx="158" cy="70" r="2.2" fill="#0a0202" />
-              </g>
-
-              <g className="v-spider-limb animate-fast-l2">
-                <path
-                  d="M70 92 Q50 96 28 104"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5.2"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M28 104 Q14 112 8 122"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M8 122 Q6 126 7 130"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="28" cy="104" r="3.2" fill="#0a0202" />
-                <circle cx="8" cy="122" r="2.2" fill="#0a0202" />
-              </g>
-
-              <g className="v-spider-limb animate-fast-r2">
-                <path
-                  d="M90 92 Q110 96 132 104"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5.2"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M132 104 Q146 112 152 122"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M152 122 Q154 126 153 130"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="132" cy="104" r="3.2" fill="#0a0202" />
-                <circle cx="152" cy="122" r="2.2" fill="#0a0202" />
-              </g>
-
-              <g className="v-spider-limb animate-fast-l1">
-                <path
-                  d="M72 94 Q58 104 42 116"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M42 116 Q32 126 28 136"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M28 136 Q27 140 28 144"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="42" cy="116" r="3.2" fill="#0a0202" />
-                <circle cx="28" cy="136" r="2.2" fill="#0a0202" />
-              </g>
-
-              <g className="v-spider-limb animate-fast-r1">
-                <path
-                  d="M88 94 Q102 104 118 116"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="5"
-                  fill="none"
-                  strokeLinecap="round"
-                  filter="url(#v-softShadow)"
-                />
-
-                <path
-                  d="M118 116 Q128 126 132 136"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M132 136 Q133 140 132 144"
-                  stroke="url(#v-legSeg)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                <circle cx="118" cy="116" r="3.2" fill="#0a0202" />
-                <circle cx="132" cy="136" r="2.2" fill="#0a0202" />
-              </g>
-
-
-              <path
-                d="M80 68 C62 68, 52 82, 52 102 C52 126, 62 140, 80 142 C98 140, 108 126, 108 102 C108 82, 98 68, 80 68 Z"
-                fill="url(#v-abdomenShell)"
-                filter="url(#v-softShadow)"
-              />
-
-              <path
-                d="M80 72 C66 72, 58 84, 58 100 C58 110, 62 118, 68 122 C64 114, 62 104, 66 92 C70 80, 76 74, 80 72 Z"
-                fill="url(#v-specular)"
-              />
-
-              <path
-                d="M80 108 L76 116 L80 120 L84 116 Z"
-                fill="#b91c1c"
-                opacity="0.85"
-              />
-
-              <path
-                d="M80 122 L76 130 L80 134 L84 130 Z"
-                fill="#b91c1c"
-                opacity="0.85"
-              />
-
-              <ellipse
-                cx="80"
-                cy="120"
-                rx="10"
-                ry="16"
-                fill="url(#v-redGlow)"
-                opacity="0.5"
-              />
-
-              <path
-                d="M76 64 L76 72 L84 72 L84 64 Q80 62 76 64 Z"
-                fill="#080202"
-              />
-
-              <path
-                d="M80 38 C66 38, 58 46, 58 58 C58 66, 64 72, 72 74 L88 74 C96 72, 102 66, 102 58 C102 46, 94 38, 80 38 Z"
-                fill="url(#v-carapaceShell)"
-                filter="url(#v-softShadow)"
-              />
-
-              <circle cx="76" cy="46" r="3.5" fill="#000000" />
-
-              <circle
-                cx="76"
-                cy="45"
-                r="1.4"
-                fill="url(#v-eyeLens)"
-              />
-
-              <circle
-                cx="75.3"
-                cy="44.3"
-                r="0.5"
-                fill="#ffffff"
-                opacity="0.9"
-              />
-
-              <circle cx="84" cy="46" r="3.5" fill="#000000" />
-
-              <circle
-                cx="84"
-                cy="45"
-                r="1.4"
-                fill="url(#v-eyeLens)"
-              />
-
-              <circle
-                cx="83.3"
-                cy="44.3"
-                r="0.5"
-                fill="#ffffff"
-                opacity="0.9"
-              />
-
-              {/* CHELICERAE */}
-              <path
-                d="M76 62 L73 72 L78 68 Z"
-                fill="#0a0202"
-              />
-
-              <path
-                d="M84 62 L87 72 L82 68 Z"
-                fill="#0a0202"
-              />
-
-              <path
-                d="M74 70 L73 74"
-                stroke="#dc2626"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                opacity="0.8"
-              />
-
-              <path
-                d="M86 70 L87 74"
-                stroke="#dc2626"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                opacity="0.8"
-              />
-            </svg>
           </div>
         </div>
       )}
 
-      <style>{`
-        @keyframes spiderBob {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-
-          50% {
-            transform: translateY(-18px);
-          }
-        }
-
-        @keyframes fastLegFlexL {
-          0%, 100% {
-            transform: rotate(0deg);
-          }
-
-          50% {
-            transform: rotate(-6deg);
-          }
-        }
-
-        @keyframes fastLegFlexR {
-          0%, 100% {
-            transform: rotate(0deg);
-          }
-
-          50% {
-            transform: rotate(6deg);
-          }
-        }
-
-        @keyframes fastLegAltL {
-          0%, 100% {
-            transform: rotate(0deg);
-          }
-
-          50% {
-            transform: rotate(7deg);
-          }
-        }
-
-        @keyframes fastLegAltR {
-          0%, 100% {
-            transform: rotate(0deg);
-          }
-
-          50% {
-            transform: rotate(-7deg);
-          }
-        }
-
-        .animate-spider-bob {
-          animation: spiderBob 2.5s ease-in-out infinite;
-        }
-
-        .animate-fast-l1 {
-          animation: fastLegFlexL 0.35s ease-in-out infinite;
-          transform-origin: 80px 80px;
-        }
-
-        .animate-fast-r1 {
-          animation: fastLegFlexR 0.35s ease-in-out infinite 0.08s;
-          transform-origin: 80px 80px;
-        }
-
-        .animate-fast-l2 {
-          animation: fastLegAltL 0.28s ease-in-out infinite 0.12s;
-          transform-origin: 80px 80px;
-        }
-
-        .animate-fast-r2 {
-          animation: fastLegAltR 0.28s ease-in-out infinite 0.05s;
-          transform-origin: 80px 80px;
-        }
-
-        .animate-fast-l3 {
-          animation: fastLegFlexL 0.4s ease-in-out infinite 0.15s;
-          transform-origin: 80px 80px;
-        }
-
-        .animate-fast-r3 {
-          animation: fastLegFlexR 0.4s ease-in-out infinite 0.1s;
-          transform-origin: 80px 80px;
-        }
-
-        .animate-fast-l4 {
-          animation: fastLegAltL 0.32s ease-in-out infinite 0.07s;
-          transform-origin: 80px 80px;
-        }
-
-        .animate-fast-r4 {
-          animation: fastLegAltR 0.32s ease-in-out infinite 0.18s;
-          transform-origin: 80px 80px;
-        }
-      `}</style>
+       
 
       <style>{`
         @keyframes radialWhiteExpand {
