@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState  , useEffect} from "react";
 import BgVideo from "../assets/FAQsvideo.MP4";
 import EventCard from "../components/EventCard";
 import SpiderCrawler2 from "../components/BlackSpider2";
@@ -209,6 +209,22 @@ const events = [
 
 const Events = () => {
     const [videoLoaded, setVideoLoaded] = useState(false);
+    const [pageLoaded, setPageLoaded] = useState(false);
+
+    useEffect(() => {
+        if (!videoLoaded) return;
+
+        // Wait for the browser to render the complete page
+        const frame1 = requestAnimationFrame(() => {
+            const frame2 = requestAnimationFrame(() => {
+                setPageLoaded(true);
+            });
+
+            return () => cancelAnimationFrame(frame2);
+        });
+
+        return () => cancelAnimationFrame(frame1);
+    }, [videoLoaded]);
 
     return (
         <section
@@ -226,279 +242,296 @@ const Events = () => {
                 xl:px-20
             "
         >
-            {/* LOADING SCREEN */}
-            {!videoLoaded && <Loading />}
+            {/* LOADING SCREEN ONLY */}
+            {!pageLoaded && <Loading />}
 
-            <div className="min-h-35"></div>
+            {/* ENTIRE EVENT PAGE */}
+            {pageLoaded && (
+                <>
+                    <div className="min-h-35"></div>
 
-            {/* Background Video */}
-            <video
-                src={BgVideo}
-                autoPlay
-                muted
-                loop
-                playsInline
-                onCanPlay={() => setVideoLoaded(true)}
-                className="
-                    pointer-events-none
-                    fixed
-                    inset-0
-                    z-0
-                    h-full
-                    w-full
-                    object-cover
-                    opacity-70
-                "
-            />
+                    {/* Background Video */}
+                    <video
+                        src={BgVideo}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        onCanPlay={() => setVideoLoaded(true)}
+                        className="
+                            pointer-events-none
+                            fixed
+                            inset-0
+                            z-0
+                            h-full
+                            w-full
+                            object-cover
+                            opacity-70
+                        "
+                    />
 
-            {/* Red Glow */}
-            <div
-                className="
-                    pointer-events-none
-                    absolute
-                    left-1/2
-                    top-0
-                    z-0
-                    h-[30rem]
-                    w-[60rem]
-                    -translate-x-1/2
-                    rounded-full
-                    blur-[150px]
-                "
-            />
-
-            {/* Grid */}
-            <div
-                className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    z-0
-                    opacity-20
-                    [background-image:linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)]
-                    [background-size:4rem_4rem]
-                "
-            />
-
-            {/* Main Container */}
-            <div className="relative z-10 mx-auto max-w-[1500px]">
-
-                {/* HEADER */}
-                <header className="mb-16 flex flex-col items-center text-center">
-
-                    {/* Badge */}
+                    {/* Red Glow */}
                     <div
                         className="
-                            mb-6
-                            inline-flex
-                            items-center
-                            gap-3
+                            pointer-events-none
+                            absolute
+                            left-1/2
+                            top-0
+                            z-0
+                            h-[30rem]
+                            w-[60rem]
+                            -translate-x-1/2
                             rounded-full
-                            border
-                            border-red-500/20
-                            bg-red-950/20
-                            px-5
-                            py-2.5
-                            shadow-[0_0_25px_rgba(220,38,38,0.08)]
-                            backdrop-blur-xl
+                            blur-[150px]
                         "
-                    >
-                        <span className="relative flex h-2 w-2">
-                            <span
+                    />
+
+                    {/* Grid */}
+                    <div
+                        className="
+                            pointer-events-none
+                            absolute
+                            inset-0
+                            z-0
+                            opacity-20
+                            [background-image:linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)]
+                            [background-size:4rem_4rem]
+                        "
+                    />
+
+                    {/* Main Container */}
+                    <div className="relative z-10 mx-auto max-w-[1500px]">
+
+                        {/* HEADER */}
+                        <header className="mb-16 flex flex-col items-center text-center">
+
+                            {/* Badge */}
+                            <div
                                 className="
-                                    absolute
-                                    inset-0
-                                    animate-ping
+                                    mb-6
+                                    inline-flex
+                                    items-center
+                                    gap-3
                                     rounded-full
-                                    bg-red-500
-                                    opacity-60
+                                    border
+                                    border-red-500/20
+                                    bg-red-950/20
+                                    px-5
+                                    py-2.5
+                                    shadow-[0_0_25px_rgba(220,38,38,0.08)]
+                                    backdrop-blur-xl
+                                "
+                            >
+                                <span className="relative flex h-2 w-2">
+                                    <span
+                                        className="
+                                            absolute
+                                            inset-0
+                                            animate-ping
+                                            rounded-full
+                                            bg-red-500
+                                            opacity-60
+                                        "
+                                    />
+
+                                    <span
+                                        className="
+                                            relative
+                                            h-2
+                                            w-2
+                                            rounded-full
+                                            bg-red-500
+                                            shadow-[0_0_12px_rgba(220,38,38,0.9)]
+                                        "
+                                    />
+                                </span>
+
+                                <span
+                                    className="
+                                        text-[10px]
+                                        font-black
+                                        uppercase
+                                        tracking-[0.4em]
+                                        text-red-400
+                                    "
+                                >
+                                    TECH EVENTS
+                                </span>
+                            </div>
+
+                            {/* TITLE */}
+                            <h1
+                                className="
+                                    bg-gradient-to-b
+                                    from-white
+                                    via-neutral-200
+                                    to-neutral-500
+                                    bg-clip-text
+                                    text-center
+                                    text-5xl
+                                    font-black
+                                    uppercase
+                                    tracking-[0.14em]
+                                    text-transparent
+                                    drop-shadow-[0_0_30px_rgba(220,38,38,0.35)]
+                                    sm:text-6xl
+                                    md:text-7xl
+                                    lg:text-8xl
+                                "
+                            >
+                                EVENTS
+                            </h1>
+
+                            {/* Red Line */}
+                            <div
+                                className="
+                                    mx-auto
+                                    mt-6
+                                    h-[2px]
+                                    w-32
+                                    bg-gradient-to-r
+                                    from-transparent
+                                    via-red-600
+                                    to-transparent
+                                    shadow-[0_0_12px_rgba(220,38,38,0.6)]
                                 "
                             />
 
-                            <span
+                            {/* Description */}
+                            <p
                                 className="
-                                    relative
-                                    h-2
-                                    w-2
-                                    rounded-full
-                                    bg-red-500
-                                    shadow-[0_0_12px_rgba(220,38,38,0.9)]
+                                    mt-7
+                                    w-full
+                                    max-w-2xl
+                                    self-center
+                                    rounded-2xl
+                                    bg-black/50
+                                    px-6
+                                    py-3
+                                    text-center
+                                    text-sm
+                                    leading-7
+                                    text-white
+                                    md:text-base
                                 "
-                            />
-                        </span>
+                            >
+                                Explore challenges where creativity, technology,
+                                competition, and innovation collide.
+                            </p>
 
-                        <span
+                            {/* Event Count */}
+                            <div
+                                className="
+                                    mt-7
+                                    flex
+                                    items-center
+                                    justify-center
+                                    gap-3
+                                    rounded-full
+                                    bg-black/30
+                                    px-4
+                                    py-2
+                                    text-[10px]
+                                    font-black
+                                    uppercase
+                                    tracking-[0.3em]
+                                    text-red-200
+                                "
+                            >
+                                <span>{events.length} EVENTS</span>
+
+                                <span className="h-1 w-1 rounded-full bg-red-600" />
+
+                                <span>ONE WEB OF INNOVATION</span>
+                            </div>
+                        </header>
+
+                        {/* EVENTS GRID */}
+                        <div
                             className="
-                                text-[10px]
-                                font-black
-                                uppercase
-                                tracking-[0.4em]
-                                text-red-400
+                                mx-auto
+                                grid
+                                w-full
+                                max-w-[1500px]
+                                grid-cols-1
+                                justify-items-center
+                                gap-5
+                                sm:grid-cols-2
                             "
                         >
-                            TECH EVENTS
-                        </span>
+                            {events.map((event) => (
+                                <EventCard
+                                    key={event.id}
+                                    event={event}
+                                />
+                            ))}
+                        </div>
+
+                        <div className="h-3"></div>
+
+                        {/* BOTTOM */}
+                        <div
+                            className="
+                                mt-16
+                                flex
+                                items-center
+                                justify-center
+                                gap-5
+                            "
+                        >
+                            <div
+                                className="
+                                    h-px
+                                    w-20
+                                    bg-gradient-to-r
+                                    from-transparent
+                                    to-red-600/40
+                                "
+                            />
+
+                            <span
+                                className="
+                                    text-[9px]
+                                    font-black
+                                    uppercase
+                                    tracking-[0.4em]
+                                    text-neutral-600
+                                "
+                            >
+                                END OF EVENTS
+                            </span>
+
+                            <div
+                                className="
+                                    h-px
+                                    w-20
+                                    bg-gradient-to-l
+                                    from-transparent
+                                    to-red-600/40
+                                "
+                            />
+                        </div>
                     </div>
 
-                    {/* TITLE */}
-                    <h1
-                        className="
-                            bg-gradient-to-b
-                            from-white
-                            via-neutral-200
-                            to-neutral-500
-                            bg-clip-text
-                            text-center
-                            text-5xl
-                            font-black
-                            uppercase
-                            tracking-[0.14em]
-                            text-transparent
-                            drop-shadow-[0_0_30px_rgba(220,38,38,0.35)]
-                            sm:text-6xl
-                            md:text-7xl
-                            lg:text-8xl
-                        "
-                    >
-                        EVENTS
-                    </h1>
+                    <div className="h-3"></div>
 
-                    {/* Red Line */}
-                    <div
-                        className="
-                            mx-auto
-                            mt-6
-                            h-[2px]
-                            w-32
-                            bg-gradient-to-r
-                            from-transparent
-                            via-red-600
-                            to-transparent
-                            shadow-[0_0_12px_rgba(220,38,38,0.6)]
-                        "
-                    />
+                    {/* Bottom Spiders */}
+                    <SpiderCrawler2 />
+                    <RedSpidy />
+                </>
+            )}
 
-                    {/* DESCRIPTION */}
-                    <p
-                        className="
-                            mt-7
-                            w-full
-                            max-w-2xl
-                            self-center
-                            rounded-2xl
-                            bg-black/50
-                            px-6
-                            py-3
-                            text-center
-                            text-sm
-                            leading-7
-                            text-white
-                            md:text-base
-                        "
-                    >
-                        Explore challenges where creativity, technology,
-                        competition, and innovation collide.
-                    </p>
-
-                    {/* Event Count */}
-                    <div
-                        className="
-                            mt-7
-                            flex
-                            items-center
-                            justify-center
-                            gap-3
-                            rounded-full
-                            bg-black/30
-                            px-4
-                            py-2
-                            text-[10px]
-                            font-black
-                            uppercase
-                            tracking-[0.3em]
-                            text-red-200
-                        "
-                    >
-                        <span>{events.length} EVENTS</span>
-
-                        <span className="h-1 w-1 rounded-full bg-red-600" />
-
-                        <span>ONE WEB OF INNOVATION</span>
-                    </div>
-                </header>
-
-                {/* EVENTS GRID */}
-                <div
-                    className="
-                        mx-auto
-                        grid
-                        w-full
-                        max-w-[1500px]
-                        grid-cols-1
-                        justify-items-center
-                        gap-5
-                        sm:grid-cols-2
-                    "
-                >
-                    {events.map((event) => (
-                        <EventCard
-                            key={event.id}
-                            event={event}
-                        />
-                    ))}
-                </div>
-
-                <div className="h-3"></div>
-
-                {/* BOTTOM */}
-                <div
-                    className="
-                        mt-16
-                        flex
-                        items-center
-                        justify-center
-                        gap-5
-                    "
-                >
-                    <div
-                        className="
-                            h-px
-                            w-20
-                            bg-gradient-to-r
-                            from-transparent
-                            to-red-600/40
-                        "
-                    />
-
-                    <span
-                        className="
-                            text-[9px]
-                            font-black
-                            uppercase
-                            tracking-[0.4em]
-                            text-neutral-600
-                        "
-                    >
-                        END OF EVENTS
-                    </span>
-
-                    <div
-                        className="
-                            h-px
-                            w-20
-                            bg-gradient-to-l
-                            from-transparent
-                            to-red-600/40
-                        "
-                    />
-                </div>
-            </div>
-
-            <div className="h-3"></div>
-
-            {/* Bottom Spiders */}
-            <SpiderCrawler2 />
-            <RedSpidy />
+            {/* VIDEO USED ONLY FOR LOADING */}
+            {!pageLoaded && (
+                <video
+                    src={BgVideo}
+                    autoPlay
+                    muted
+                    playsInline
+                    onCanPlay={() => setVideoLoaded(true)}
+                    className="hidden"
+                />
+            )}
         </section>
     );
 };
