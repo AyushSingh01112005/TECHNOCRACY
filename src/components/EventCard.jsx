@@ -13,9 +13,8 @@ const EventCard = ({ event }) => {
                group
         relative
         flex
-        min-h-[300px]
+        min-h-[340px]
         max-w-[350px]
-        flex-col
         overflow-hidden
         rounded-2xl
         border
@@ -27,23 +26,22 @@ const EventCard = ({ event }) => {
         duration-500
         ease-out
 
-        hover:-translate-y-3
+        hover:-translate-y-1
         hover:border-red-500/50
         hover:bg-red-950/15
+        hover:bg-black/10
         hover:shadow-[0_25px_70px_rgba(220,38,38,0.18)]"
         >
-            {/* =====================================================
-                TOP RED LINE
-            ====================================================== */}
+           
 
             <div
                 className="
                     pointer-events-none
                     absolute
-                    left-0
+                    left-5
                     top-0
                     z-20
-                    h-[2px]
+                    h-[40px]
                     w-0
                     bg-gradient-to-r
                     from-transparent
@@ -56,11 +54,7 @@ const EventCard = ({ event }) => {
                     group-hover:opacity-100
                 "
             />
-
-            {/* =====================================================
-                CORNER GLOW
-            ====================================================== */}
-
+ 
             <div
                 className="
                     pointer-events-none
@@ -79,9 +73,6 @@ const EventCard = ({ event }) => {
                 "
             />
 
-            {/* =====================================================
-                CARD CONTENT
-            ====================================================== */}
 
             <div
                 className="
@@ -90,21 +81,21 @@ const EventCard = ({ event }) => {
                     flex-1
                     flex-col
                     px-10
-                    py-7
+                     
                 "
             >
 
-                {/* =====================================================
-                    HEADER
-                ====================================================== */}
-
+             
                 <div
                     className="
                         relative
+                        left-2
+                        top-1.5
                         z-10
                         flex
                         items-center
-                        justify-between
+                        justify-centre
+                        gap-[78%]
                     "
                 >
 
@@ -143,8 +134,8 @@ const EventCard = ({ event }) => {
                     <div
                         className="
                             flex
-                            h-10
-                            w-10
+                            h-8
+                            w-8
                             items-center
                             justify-center
                             rounded-full
@@ -176,30 +167,28 @@ const EventCard = ({ event }) => {
                     </div>
                 </div>
 
-                <div className="mt-8">
+                <div className=" max-h-10 ">
 
                     <h2
                         className="
                             relative
+                            left-5
                             z-10
                             min-h-[64px]
-
+leading-[2.5]
                             text-xl
                             font-black
                             uppercase
-                            leading-[2.5]
-                            tracking-[0.08em]
-
+                            tracking-[0.08em]   
                             text-white
-
                             transition-all
                             duration-300
-
                             group-hover:text-red-500
                         "
                     >
                         {event.name}
                     </h2>
+                    <div className="relative -top-5 w-full h-[1px] mt-[5px] bg-red-500"></div>
 
                 </div>
 
@@ -207,18 +196,14 @@ const EventCard = ({ event }) => {
                     className="
                         relative
                         z-10
-
-                        mt-2
+                        top-5
+                        left-5
+                        max-w-[90%]
                         min-h-[80px]
-
                         text-[13px]
-                        leading-6
-
                         text-neutral-500
-
                         transition-colors
                         duration-300
-
                         group-hover:text-neutral-300
                     "
                 >
@@ -229,12 +214,9 @@ const EventCard = ({ event }) => {
                     className="
                         relative
                         z-10
-
                         my-7
-
                         h-px
                         w-full
-
                         bg-gradient-to-r
                         from-red-600/50
                         via-white/[0.08]
@@ -245,10 +227,12 @@ const EventCard = ({ event }) => {
                 <div
                     className="
                         relative
+                        left-5
+                        top-4
                         z-10
                         flex
                         flex-col
-                        gap-3
+                        gap-2
                     "
                 >
 
@@ -427,11 +411,13 @@ const EventCard = ({ event }) => {
 
                 <div
                     className="
+                    relative 
+                    top-7
                         mt-auto
                         flex
                         items-center
                         justify-center
-                        pt-8
+                        pt-18
                     "
                 >
 

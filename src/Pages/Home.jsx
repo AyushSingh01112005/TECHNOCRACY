@@ -13,7 +13,7 @@ import {
     FaInstagram,
     FaFacebookF,
     FaLinkedinIn,
-    FaGithub,
+    FaYoutube,
     FaXTwitter,
 } from "react-icons/fa6";
 
@@ -25,10 +25,6 @@ const Home = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // =========================================================
-    // WHITE TRANSITION
-    // Runs only when coming from Intro "/" page
-    // =========================================================
 
     const [showTransition, setShowTransition] = useState(
         location.state?.from === "/" &&
@@ -40,13 +36,11 @@ const Home = () => {
             location.state?.from === "/" &&
             location.state?.whiteTransition === true;
 
-        // If user didn't come from Intro, don't show transition
         if (!cameFromIntro) {
             setShowTransition(false);
             return;
         }
 
-        // Start white transition
         setShowTransition(true);
 
         // Remove transition after 5 seconds
@@ -67,15 +61,6 @@ const Home = () => {
         };
     }, [location.state, location.pathname, navigate]);
 
-    // =========================================================
-    // BACKGROUND VIDEO
-    //
-    // First play:
-    // 0s → 13.4s
-    //
-    // Then:
-    // 3s → 13.4s
-    // =========================================================
 
     useEffect(() => {
         const video = videoRef.current;
@@ -121,9 +106,6 @@ const Home = () => {
         };
     }, []);
 
-    // =========================================================
-    // SCROLL POSITION
-    // =========================================================
 
     useEffect(() => {
         if (location.state?.scrollTo === undefined) return;
@@ -140,15 +122,8 @@ const Home = () => {
 
     return (
         <>
-            {/* =====================================================
-                BLACK SVG
-            ====================================================== */}
 
             <BlackSvg />
-
-            {/* =====================================================
-                WHITE INTRO TRANSITION
-            ====================================================== */}
 
             {showTransition && (
                 <div
@@ -163,15 +138,7 @@ const Home = () => {
                 />
             )}
 
-            {/* =====================================================
-                MAIN PAGE
-            ====================================================== */}
-
             <div className="relative min-h-screen">
-
-                {/* =================================================
-                    BACKGROUND VIDEO
-                ================================================== */}
 
                 <video
                     ref={videoRef}
@@ -189,8 +156,6 @@ const Home = () => {
                     "
                 />
 
-                {/* Dark Overlay */}
-
                 <div
                     className="
                         pointer-events-none
@@ -200,8 +165,6 @@ const Home = () => {
                         bg-black/60
                     "
                 />
-
-                {/* Red Radial Glow */}
 
                 <div
                     className="
@@ -213,15 +176,7 @@ const Home = () => {
                     "
                 />
 
-                {/* =================================================
-                    CONTENT
-                ================================================== */}
-
                 <div className="relative z-10">
-
-                    {/* =================================================
-                        HERO SECTION
-                    ================================================== */}
 
                     <section
                         className="
@@ -283,9 +238,6 @@ const Home = () => {
                             "
                         />
 
-                        {/* =================================================
-                            SOCIAL SIDEBAR
-                        ================================================== */}
 
                         <aside
                             className="
@@ -323,29 +275,30 @@ const Home = () => {
                             {[
                                 {
                                     icon: FaInstagram,
-                                    href: "https://www.instagram.com/codeutsavanitrr/",
+                                    href: "https://www.instagram.com/nitrr.aavartan/?hl=en",
                                     label: "Instagram",
                                 },
                                 {
                                     icon: FaFacebookF,
-                                    href: "https://www.facebook.com/codeutsava/",
+                                    href: "https://www.facebook.com/NITRR.Aavartan/",
                                     label: "Facebook",
                                 },
                                 {
                                     icon: FaLinkedinIn,
-                                    href: "https://www.linkedin.com/company/codeutsava/",
+                                    href: "https://www.linkedin.com/company/aavartan/",
                                     label: "LinkedIn",
                                 },
                                 {
                                     icon: FaXTwitter,
-                                    href: "https://x.com/codeutsavanitrr?lang=en",
+                                    href: "https://x.com/nitrr_aavartan",
                                     label: "X",
                                 },
                                 {
-                                    icon: FaGithub,
-                                    href: "https://github.com/TCP-Tech",
+                                    icon: FaYoutube,
+                                    href: "https://www.youtube.com/@AAVARTANNITRAIPUR",
                                     label: "GitHub",
                                 },
+                                
                             ].map((social, index) => {
                                 const Icon = social.icon;
 
@@ -389,10 +342,6 @@ const Home = () => {
                             />
 
                         </aside>
-
-                        {/* =================================================
-                            HERO CONTENT
-                        ================================================== */}
 
                         <div
                             className="
@@ -473,11 +422,6 @@ const Home = () => {
                                 </span>
 
                             </div>
-
-                            {/* =================================================
-                                TITLE
-                            ================================================== */}
-
                             <h1
                                 className="
                                     relative
@@ -502,9 +446,6 @@ const Home = () => {
                                 TECHNOCRACY
                             </h1>
 
-                            {/* =================================================
-                                SUBTITLE
-                            ================================================== */}
 
                             <h2
                                 className="
@@ -569,9 +510,6 @@ const Home = () => {
 
                             <div className="h-10" />
 
-                            {/* =================================================
-                                EVENT BUTTONS
-                            ================================================== */}
 
                             <div
                                 className="
@@ -654,10 +592,6 @@ const Home = () => {
                         </div>
                     </section>
 
-                    {/* =====================================================
-                        ABOUT SECTION
-                    ====================================================== */}
-
                     <section
                         className="
                             relative
@@ -678,35 +612,19 @@ const Home = () => {
 
                     <div className="h-20" />
 
-                    {/* =====================================================
-                        FAQ SECTION
-                    ====================================================== */}
 
                     <FAQs />
 
-                    {/* =====================================================
-                        FOOTER SPACING
-                    ====================================================== */}
 
                     <div className="h-32 w-full" />
 
-                    {/* =====================================================
-                        FOOTER
-                    ====================================================== */}
 
                     <BottomHome />
 
                 </div>
 
-                {/* =========================================================
-                    BLACK SVG
-                ========================================================== */}
 
                 <BlackSvg />
-
-                {/* =========================================================
-                    SPIDER CRAWLER
-                ========================================================== */}
 
                 <div
                     className="
@@ -721,9 +639,6 @@ const Home = () => {
 
             </div>
 
-            {/* =============================================================
-                WHITE TRANSITION ANIMATION
-            ============================================================= */}
 
             <style>{`
                 @keyframes homeWhite {

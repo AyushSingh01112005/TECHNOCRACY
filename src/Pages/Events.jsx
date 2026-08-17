@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import BgVideo from "../assets/FAQsvideo.MP4";
 import EventCard from "../components/EventCard";
 import SpiderCrawler2 from "../components/BlackSpider2";
-import RedSpidy from "../components/RedSpidy"
+import RedSpidy from "../components/RedSpidy";
+import Loading from "./Loading";
 
 const events = [
     {
@@ -126,17 +127,7 @@ const events = [
         deadline: "31/01/2025",
         link: "https://technocracy.nitrr.ac.in/events/ReverseCodingForm",
     },
-    {
-        id: 12,
-        name: "WORKSHOP ON VEHICLE DATA ACQUISITION",
-        description:
-            "A certified workshop covering CAN protocol fundamentals, vehicle communication, data collection, and analysis.",
-        date: "01/02/2025",
-        time: "11:00 AM - 1:00 PM + 2:00 PM - 3:30 PM",
-        venue: "E-Hall, NIT Raipur",
-        deadline: "31/01/2025",
-        link: "https://technocracy.nitrr.ac.in/events/WorkshopVDAForm",
-    },
+    
     {
         id: 13,
         name: "MOCK CID",
@@ -217,6 +208,8 @@ const events = [
 ];
 
 const Events = () => {
+    const [videoLoaded, setVideoLoaded] = useState(false);
+
     return (
         <section
             className="
@@ -233,16 +226,19 @@ const Events = () => {
                 xl:px-20
             "
         >
+            {/* LOADING SCREEN */}
+            {!videoLoaded && <Loading />}
+
             <div className="min-h-35"></div>
 
             {/* Background Video */}
-
             <video
                 src={BgVideo}
                 autoPlay
                 muted
                 loop
                 playsInline
+                onCanPlay={() => setVideoLoaded(true)}
                 className="
                     pointer-events-none
                     fixed
@@ -256,7 +252,6 @@ const Events = () => {
             />
 
             {/* Red Glow */}
-
             <div
                 className="
                     pointer-events-none
@@ -273,7 +268,6 @@ const Events = () => {
             />
 
             {/* Grid */}
-
             <div
                 className="
                     pointer-events-none
@@ -287,15 +281,12 @@ const Events = () => {
             />
 
             {/* Main Container */}
-
             <div className="relative z-10 mx-auto max-w-[1500px]">
 
                 {/* HEADER */}
-
                 <header className="mb-16 flex flex-col items-center text-center">
 
                     {/* Badge */}
-
                     <div
                         className="
                             mb-6
@@ -312,14 +303,7 @@ const Events = () => {
                             backdrop-blur-xl
                         "
                     >
-                        <span
-                            className="
-                                relative
-                                flex
-                                h-2
-                                w-2
-                            "
-                        >
+                        <span className="relative flex h-2 w-2">
                             <span
                                 className="
                                     absolute
@@ -357,7 +341,6 @@ const Events = () => {
                     </div>
 
                     {/* TITLE */}
-
                     <h1
                         className="
                             bg-gradient-to-b
@@ -381,7 +364,6 @@ const Events = () => {
                     </h1>
 
                     {/* Red Line */}
-
                     <div
                         className="
                             mx-auto
@@ -397,7 +379,6 @@ const Events = () => {
                     />
 
                     {/* DESCRIPTION */}
-
                     <p
                         className="
                             mt-7
@@ -420,7 +401,6 @@ const Events = () => {
                     </p>
 
                     {/* Event Count */}
-
                     <div
                         className="
                             mt-7
@@ -428,15 +408,15 @@ const Events = () => {
                             items-center
                             justify-center
                             gap-3
+                            rounded-full
+                            bg-black/30
+                            px-4
+                            py-2
                             text-[10px]
                             font-black
-                            text-red-200
                             uppercase
                             tracking-[0.3em]
-                            text-neutral-600
-                            bg-black/30
-                            rounded
-                            -full
+                            text-red-200
                         "
                     >
                         <span>{events.length} EVENTS</span>
@@ -448,7 +428,6 @@ const Events = () => {
                 </header>
 
                 {/* EVENTS GRID */}
-
                 <div
                     className="
                         mx-auto
@@ -468,9 +447,10 @@ const Events = () => {
                         />
                     ))}
                 </div>
-                <div className="h-3"></div>
-                {/* BOTTOM */}
 
+                <div className="h-3"></div>
+
+                {/* BOTTOM */}
                 <div
                     className="
                         mt-16
@@ -489,7 +469,6 @@ const Events = () => {
                             to-red-600/40
                         "
                     />
-
 
                     <span
                         className="
@@ -513,11 +492,13 @@ const Events = () => {
                         "
                     />
                 </div>
-
             </div>
+
             <div className="h-3"></div>
-            <SpiderCrawler2/>
-            <RedSpidy/>
+
+            {/* Bottom Spiders */}
+            <SpiderCrawler2 />
+            <RedSpidy />
         </section>
     );
 };

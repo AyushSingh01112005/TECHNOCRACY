@@ -39,10 +39,11 @@ const NotFound = () => {
     return (
         <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-black">
 
-            {/* Loading Screen */}
+            {/* ================= LOADING SCREEN ================= */}
             {!videoReady && (
                 <div className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black">
 
+                    {/* Spinner */}
                     <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/10 border-t-red-500" />
 
                     <p className="mt-6 text-xs font-black uppercase tracking-[0.45em] text-red-500">
@@ -56,7 +57,7 @@ const NotFound = () => {
                 </div>
             )}
 
-            {/* Background Video */}
+            {/* ================= BACKGROUND VIDEO ================= */}
             <video
                 src={Not}
                 muted
@@ -64,27 +65,31 @@ const NotFound = () => {
                 autoPlay
                 loop
                 preload="auto"
-                onCanPlay={handleVideoReady}
+                onCanPlayThrough={handleVideoReady}
                 className={`
-                    absolute inset-0 h-full w-full object-cover
+                    absolute inset-0
+                    h-full w-full
+                    object-cover
                     transition-opacity duration-500
                     ${videoReady ? "opacity-100" : "opacity-0"}
                 `}
             />
 
-            {/* Dark Overlay */}
+            {/* ================= DARK OVERLAY ================= */}
             <div
                 className={`
-                    absolute inset-0 bg-black/60
+                    absolute inset-0
+                    bg-black/60
                     transition-opacity duration-500
                     ${videoReady ? "opacity-100" : "opacity-0"}
                 `}
             />
 
-            {/* Main Content */}
+            {/* ================= MAIN CONTENT ================= */}
             <div
                 className={`
-                    relative z-10 flex h-full w-full
+                    relative z-10
+                    flex h-full w-full
                     flex-col items-center justify-center
                     text-center
                     transition-opacity duration-500
@@ -123,17 +128,20 @@ const NotFound = () => {
 
             </div>
 
-            {/* Black Spiders */}
+            {/* ================= SPIDERS ================= */}
             {videoReady && (
                 <>
+                    {/* Black Spider 1 */}
                     <div className="absolute left-10 top-1/2 z-10 -translate-x-1/2">
                         <BlackSvg />
                     </div>
 
+                    {/* Black Spider 2 */}
                     <div className="absolute left-[60%] top-2/3 z-10 translate-y-1/2">
                         <BlackSvg />
                     </div>
 
+                    {/* Black Spider 3 */}
                     <div className="absolute right-50 top-1/2 z-10 -translate-x-1/2">
                         <BlackSvg />
                     </div>
@@ -145,7 +153,8 @@ const NotFound = () => {
                             left: `${position.x}%`,
                             top: `${position.y}%`,
                             transform: "translate(-50%, -50%)",
-                            transition: "left 0.35s linear, top 0.35s linear",
+                            transition:
+                                "left 0.35s linear, top 0.35s linear",
                         }}
                     >
                         <RedSpidy />
