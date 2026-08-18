@@ -51,7 +51,7 @@ const NotFound = () => {
                     </p>
 
                     <p className="mt-3 text-[9px] uppercase tracking-[0.3em] text-white/30">
-                        CODEUTSAVA 10.0
+                        TECHNOCRACY 26
                     </p>
 
                 </div>

@@ -53,7 +53,7 @@ const Loading = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 overflow-hidden bg-black/80 pointer-events-none">
+        <div className="fixed inset-0 overflow-hidden   pointer-events-none">
 
             {/* SpiderCrawler */}
             {crawlerPositions.map((position, index) => (

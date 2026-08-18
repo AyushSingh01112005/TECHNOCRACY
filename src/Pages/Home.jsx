@@ -25,12 +25,15 @@ const Home = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    // Keep the entire screen white until video is ready
+    const [videoReady, setVideoReady] = useState(false);
 
     const [showTransition, setShowTransition] = useState(
         location.state?.from === "/" &&
         location.state?.whiteTransition === true
     );
 
+    // Handle white transition coming from Intro
     useEffect(() => {
         const cameFromIntro =
             location.state?.from === "/" &&
@@ -43,13 +46,9 @@ const Home = () => {
 
         setShowTransition(true);
 
-        // Remove transition after 5 seconds
         const timer = setTimeout(() => {
             setShowTransition(false);
 
-            // Clear navigation state
-            // This prevents animation from playing again
-            // when component rerenders
             navigate(location.pathname, {
                 replace: true,
                 state: {},
@@ -61,7 +60,37 @@ const Home = () => {
         };
     }, [location.state, location.pathname, navigate]);
 
+    // Video loading
+    useEffect(() => {
+        const video = videoRef.current;
 
+        if (!video) return;
+
+        const handleVideoReady = () => {
+            setVideoReady(true);
+
+            video.play().catch((err) => {
+                console.log("Video play error:", err);
+            });
+        };
+
+        video.addEventListener("canplaythrough", handleVideoReady);
+
+        // If browser already loaded enough video
+        if (video.readyState >= 4) {
+            handleVideoReady();
+        }
+
+        return () => {
+            video.removeEventListener(
+                "canplaythrough",
+                handleVideoReady
+            );
+        };
+    }, []);
+
+    // Video loop: first 0 → 13.4 seconds,
+    // then continuously loop 3 → 13.4 seconds
     useEffect(() => {
         const video = videoRef.current;
 
@@ -74,7 +103,6 @@ const Home = () => {
             if (video.currentTime >= 13.4 && !isLooping) {
                 isLooping = true;
 
-                // Start loop from 3 seconds
                 video.currentTime = 3.0;
 
                 video.play().catch((err) => {
@@ -87,12 +115,10 @@ const Home = () => {
             }
         };
 
-        video.addEventListener("timeupdate", handleTimeUpdate);
-
-        // Start video
-        video.play().catch((err) => {
-            console.log("Initial video play error:", err);
-        });
+        video.addEventListener(
+            "timeupdate",
+            handleTimeUpdate
+        );
 
         return () => {
             video.removeEventListener(
@@ -106,7 +132,7 @@ const Home = () => {
         };
     }, []);
 
-
+    // Scroll to specific position
     useEffect(() => {
         if (location.state?.scrollTo === undefined) return;
 
@@ -122,10 +148,22 @@ const Home = () => {
 
     return (
         <>
+           
+            {!videoReady && (
+                <div
+                    className="
+                        fixed
+                        inset-0
+                        z-[999999]
+                        bg-white
+                    "
+                />
+            )}
 
             <BlackSvg />
 
-            {showTransition && (
+            {/* Intro → Home white transition */}
+            {showTransition && videoReady && (
                 <div
                     className="
                         pointer-events-none
@@ -146,6 +184,8 @@ const Home = () => {
                     autoPlay
                     muted
                     playsInline
+                    preload="auto"
+                    onCanPlayThrough={() => setVideoReady(true)}
                     className="
                         fixed
                         inset-0
@@ -156,6 +196,7 @@ const Home = () => {
                     "
                 />
 
+                {/* Dark Overlay */}
                 <div
                     className="
                         pointer-events-none
@@ -166,6 +207,7 @@ const Home = () => {
                     "
                 />
 
+                {/* Red Radial Glow */}
                 <div
                     className="
                         pointer-events-none
@@ -177,7 +219,7 @@ const Home = () => {
                 />
 
                 <div className="relative z-10">
-
+ 
                     <section
                         className="
                             relative
@@ -238,7 +280,6 @@ const Home = () => {
                             "
                         />
 
-
                         <aside
                             className="
                                 fixed
@@ -296,9 +337,8 @@ const Home = () => {
                                 {
                                     icon: FaYoutube,
                                     href: "https://www.youtube.com/@AAVARTANNITRAIPUR",
-                                    label: "GitHub",
+                                    label: "YouTube",
                                 },
-                                
                             ].map((social, index) => {
                                 const Icon = social.icon;
 
@@ -342,7 +382,7 @@ const Home = () => {
                             />
 
                         </aside>
-
+ 
                         <div
                             className="
                                 relative
@@ -422,6 +462,9 @@ const Home = () => {
                                 </span>
 
                             </div>
+
+                            {/* Title */}
+
                             <h1
                                 className="
                                     relative
@@ -446,6 +489,7 @@ const Home = () => {
                                 TECHNOCRACY
                             </h1>
 
+                            {/* Subtitle */}
 
                             <h2
                                 className="
@@ -510,6 +554,7 @@ const Home = () => {
 
                             <div className="h-10" />
 
+                            {/* Buttons */}
 
                             <div
                                 className="
@@ -591,7 +636,7 @@ const Home = () => {
 
                         </div>
                     </section>
-
+ 
                     <section
                         className="
                             relative
@@ -612,17 +657,19 @@ const Home = () => {
 
                     <div className="h-20" />
 
+                    {/* FAQs */}
 
                     <FAQs />
 
-
                     <div className="h-32 w-full" />
 
+                    {/* Bottom */}
 
                     <BottomHome />
 
                 </div>
 
+                {/* Bottom Spider */}
 
                 <BlackSvg />
 
@@ -639,7 +686,7 @@ const Home = () => {
 
             </div>
 
-
+            
             <style>{`
                 @keyframes homeWhite {
                     0% {

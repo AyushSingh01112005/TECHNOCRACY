@@ -133,7 +133,7 @@ const Register = () => {
             {/* Bottom Text */}
             <div className="absolute bottom-6 left-0 z-10 w-full text-center">
                 <p className="text-[9px] font-black uppercase tracking-[0.45em] text-white/30">
-                    CODEUTSAVA 8.0
+                    TECHNOCRACY 26
                 </p>
             </div>
 

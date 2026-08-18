@@ -7,6 +7,7 @@ const Intro = () => {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const timeoutRef = useRef(null);
+
   const [isEntered, setIsEntered] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
@@ -92,6 +93,7 @@ const Intro = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
 
+      {/* VIDEO */}
       <video
         ref={videoRef}
         src={chorPolice}
@@ -99,23 +101,29 @@ const Intro = () => {
         muted
         playsInline
         preload="auto"
-        onCanPlay={handleVideoReady}
+        onCanPlayThrough={handleVideoReady}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
         onTimeUpdate={handleTimeUpdate}
-        className="fixed inset-0 z-0 h-full w-full object-cover"
+        className={`fixed inset-0 z-0 h-full w-full object-cover transition-opacity duration-300 ${
+          videoReady ? "opacity-100" : "opacity-0"
+        }`}
       />
 
-      <div
-        className="
-          pointer-events-none
-          fixed
-          inset-0
-          z-50
-          bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]
-        "
-      />
+      {/* DARK OVERLAY */}
+      {videoReady && (
+        <div
+          className="
+            pointer-events-none
+            fixed
+            inset-0
+            z-50
+            bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]
+          "
+        />
+      )}
 
+      {/* WHITE TRANSITION */}
       {isTransitioning && (
         <div
           className="
@@ -129,7 +137,8 @@ const Intro = () => {
         />
       )}
 
-      {!isEntered && (
+      {/* INTRO CONTENT */}
+      {!isEntered && videoReady && (
         <div
           className="
             relative
@@ -142,9 +151,9 @@ const Intro = () => {
             text-center
           "
         >
-
           <div className="relative flex items-center justify-center">
 
+            {/* WEB SVG */}
             <svg
               className="
                 pointer-events-none
@@ -199,6 +208,7 @@ const Intro = () => {
                 fill="url(#webGlow)"
               />
 
+              {/* WEB RADIAL LINES */}
               <g
                 stroke="#ffffff"
                 strokeWidth="3"
@@ -235,6 +245,7 @@ const Intro = () => {
                 <line x1="200" y1="150" x2="5" y2="185" />
               </g>
 
+              {/* RED WEB */}
               <g
                 fill="none"
                 stroke="#ef4444"
@@ -272,6 +283,7 @@ const Intro = () => {
                 />
               </g>
 
+              {/* WHITE WEB */}
               <g
                 fill="none"
                 stroke="#ffffff"
@@ -304,57 +316,58 @@ const Intro = () => {
               </g>
             </svg>
 
-
+            {/* TITLE */}
             <h1
-  className="
-    relative
-    z-20
-    bg-gradient-to-b
-    from-white
-    via-gray-200
-    to-gray-500
-    bg-clip-text
-    text-transparent
+              className="
+                relative
+                z-20
+                bg-gradient-to-b
+                from-white
+                via-gray-200
+                to-gray-500
+                bg-clip-text
+                text-transparent
+                text-5xl
+                sm:text-7xl
+                md:text-8xl
+                font-black
+                uppercase
+                tracking-[0.18em]
+                leading-[0.85]
+                animate-title-in
+                drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]
+                [text-shadow:0_0_25px_rgba(239,68,68,0.25)]
+                transition-all
+                duration-500
+                hover:tracking-[0.24em]
+              "
+            >
+              TEAM <br />
 
-    text-5xl
-    sm:text-7xl
-    md:text-8xl
+              <span className="text-white">
+                TECHNO
+              </span>
 
-    font-black
-    uppercase
-    tracking-[0.18em]
-    leading-[0.85]
-    animate-title-in
-
-    drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]
-    [text-shadow:0_0_25px_rgba(239,68,68,0.25)]
-
-    transition-all
-    duration-500
-    hover:tracking-[0.24em]
-  "
->
-  TEAM <br />
-  <span className="text-white">TECHNO</span>
-  <span
-    className="
-      bg-gradient-to-r
-      from-red-500
-      via-red-400
-      to-red-600
-      bg-clip-text
-      text-transparent
-    "
-  >
-    CRACY
-  </span>
-</h1>
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-red-500
+                  via-red-400
+                  to-red-600
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                CRACY
+              </span>
+            </h1>
           </div>
-          <div className="min-h-3"> </div>
 
+          <div className="min-h-3"></div>
 
           <div className="h-10" />
 
+          {/* ENTER BUTTON */}
           <button
             type="button"
             onClick={handleEnter}
@@ -382,15 +395,11 @@ const Intro = () => {
               transition-all
               duration-300
               ease-out
-              
-
               hover:scale-105
               hover:border-red-400
               hover:bg-red-600/80
               hover:shadow-[0_0_30px_rgba(239,68,68,0.55)]
-
               active:scale-95
-
               disabled:cursor-not-allowed
               disabled:opacity-70
             "
@@ -464,8 +473,7 @@ const Intro = () => {
                 transition-all
                 duration-300
                 group-hover:tracking-[0.5em]
-                 animate-title-in
-
+                animate-title-in
               "
             >
               ENTER
@@ -488,20 +496,16 @@ const Intro = () => {
             </span>
           </button>
 
-
-
+          {/* SPIDER */}
           <div className="relative mt-8 z-30 w-32 sm:w-40 animate-spider-bob">
-
             <div className="spider-silk" />
 
-            <SpiderCrawler2  className=" animate-title-in" />
-
+            <SpiderCrawler2 className="animate-title-in" />
           </div>
         </div>
       )}
 
-       
-
+      {/* ANIMATION */}
       <style>{`
         @keyframes radialWhiteExpand {
           0%, 9% {
